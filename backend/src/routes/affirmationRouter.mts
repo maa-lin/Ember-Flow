@@ -1,8 +1,26 @@
 import { request, Request, response, Response } from "express";
 import express from "express";
-import { getAffirmation, getAffirmations } from "../controllers/affirmationController.mjs";
+import { getAffirmation, getAffirmationById, getAffirmations } from "../controllers/affirmationController.mjs";
 
 const router = express.Router();
+
+router.get("/", async (req: Request, res: Response) => {
+    try {
+        const { type } = req.query;
+
+        const affirmations = await getAffirmations(type as string);
+
+        if (affirmations.length < 1) {
+            res.status(400).json({ status: "No affirmations were found" });
+        } else {
+            res.status(200).json(affirmations);
+        }
+
+    } catch (error) {
+        res.status(500).send(error);
+        console.error(error);
+    }
+});
 
 router.get("/random", async (req: Request, res: Response) => {
     try {
@@ -15,7 +33,7 @@ router.get("/random", async (req: Request, res: Response) => {
         const affirmation = await getAffirmation(type as string);
 
         if (!affirmation) {
-            res.status(400).json({ status: "No affirmation was found" });
+            res.status(400).json({ status: `No affirmation with type '${type}' was found` });
         } else {
             res.status(200).json(affirmation);
         }
@@ -26,18 +44,18 @@ router.get("/random", async (req: Request, res: Response) => {
     }
 });
 
-router.get("/all", async (req: Request, res: Response) => {
+router.get("/id/:id", async (req: Request, res: Response) => {
     try {
-        const { type } = req.query;
+        const { id } = req.params;
 
-        const affirmations = await getAffirmations(type as string);
+        const affirmation = await getAffirmationById(id);
 
-        if (affirmations.length < 1) {
-            res.status(400).json({ status: "No affirmations were found" });
+        if (!affirmation) {
+            res.status(400).json({ status: `No affirmation with id '${id}' was found.` })
         } else {
-            res.status(200).json(affirmations);
+            res.status(200).json(affirmation);
         }
-
+        
     } catch (error) {
         res.status(500).send(error);
         console.error(error);

@@ -38,4 +38,16 @@ export const getAffirmations = async (type: string): Promise<AffirmationDto[]> =
     const dto = affirmations.map((a) => convertAffirmationDbToDto(a));
 
     return dto;
+};
+
+export const getAffirmationById = async (id: string): Promise<AffirmationDto | null> => {
+    const affirmation = await Affirmation.findOne({ id: id })
+
+    if (!affirmation) {
+        return null;
+    }
+
+    const dto = convertAffirmationDbToDto(affirmation);
+
+    return dto;
 }
