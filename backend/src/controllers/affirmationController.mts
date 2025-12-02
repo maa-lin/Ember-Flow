@@ -1,4 +1,4 @@
-import { InferSchemaType } from "mongoose";
+import { DeleteResult, InferSchemaType } from "mongoose";
 import Affirmation from "../models/AffirmationSchema.mjs";
 import { AffirmationDto } from "../models/AffirmationDto.mjs";
 
@@ -67,8 +67,36 @@ export const createAffirmation = async (type: string, text: string): Promise<Aff
     return dto;
 };
 
-export const deleteAffirmation = async (id: string): Promise<boolean> => {
+export const updateAffirmation = async (id: string, type: string, text: string): Promise<AffirmationDto | null> => {
+    const affirmation = await Affirmation.findOne({ id: id });
+
+    if (!affirmation) {
+        return null;
+    };
+
+    if (type) {
+        affirmation.type = type.toLowerCase();
+    };
+
+    if (text) {
+        affirmation.text = text.toLowerCase();
+    };
+
+    await affirmation.save();
+
+    const dto = convertAffirmationDbToDto(affirmation);
+
+    return dto;
+};
+
+export const deleteAffirmation = async (id: string): Promise<number> => {
     const affirmationToBeDeleted = await Affirmation.deleteOne({ id: id });
 
-    return affirmationToBeDeleted.deletedCount > 0;
-}
+    return affirmationToBeDeleted.deletedCount;
+};
+
+export const deleteAffirmationsByType = async (type: string): Promise<number> => {
+    const affirmationsToBeDeleted = await Affirmation.deleteMany({ type: type });
+    
+    return affirmationsToBeDeleted.deletedCount;
+};
