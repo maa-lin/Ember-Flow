@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { json } from "express";
 import dotenv from "dotenv";
+import affirmationRouter from "./routes/affirmationRouter.mjs"
 
 dotenv.config();
 const port = process.env.PORT || 3000;
@@ -13,14 +14,17 @@ const app = express();
 
 app.use(json());
 
+app.use("/affirmations", affirmationRouter);
+
 app.get("/ping", (req, res) => {
     res.status(200).json({ message: "Welcome!" });
 });
 
-app.listen(port, async (error) => {
+
+app.listen(port, async () => {
     try {
         await mongoose.connect(dbUrl);
-        console.log(`API is running on ${port}, connected to database...`)
+        console.log(`API is running on ${port}, connected to database: `, mongoose.connection.db?.databaseName)
     } 
     catch (error) {
         console.error("ERROR", error);
