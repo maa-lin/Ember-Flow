@@ -41,7 +41,7 @@ export const getAffirmations = async (type: string): Promise<AffirmationDto[]> =
 };
 
 export const getAffirmationById = async (id: string): Promise<AffirmationDto | null> => {
-    const affirmation = await Affirmation.findOne({ id: id })
+    const affirmation = await Affirmation.findOne({ id: id });
 
     if (!affirmation) {
         return null;
@@ -50,4 +50,25 @@ export const getAffirmationById = async (id: string): Promise<AffirmationDto | n
     const dto = convertAffirmationDbToDto(affirmation);
 
     return dto;
+};
+
+export const createAffirmation = async (type: string, text: string): Promise<AffirmationDto | null> => {
+    const isDuplicate = await Affirmation.findOne({ type: type.toLowerCase(), text: text.toLowerCase() });
+
+    if (isDuplicate) {
+        return null;
+    };
+
+    const id = crypto.randomUUID();
+    const affirmation = await Affirmation.create({ id: id, type: type.toLowerCase(), text: text.toLowerCase() });
+
+    const dto = convertAffirmationDbToDto(affirmation);
+
+    return dto;
+};
+
+export const deleteAffirmation = async (id: string): Promise<boolean> => {
+    const affirmationToBeDeleted = await Affirmation.deleteOne({ id: id });
+
+    return affirmationToBeDeleted.deletedCount > 0;
 }
