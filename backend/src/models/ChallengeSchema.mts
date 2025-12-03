@@ -2,6 +2,10 @@ import { model, Schema } from "mongoose";
 
 const ChallengeSchema = new Schema(
     {
+        id: {
+            type: String,
+            required: true
+        },
         mood: {
             type: String,
             required: true
@@ -9,7 +13,11 @@ const ChallengeSchema = new Schema(
         text: {
             type: String,
             required: true
-        }
+        },
+        affirmation: {
+            type: String,
+            required: true
+        },
     }
 );
 
