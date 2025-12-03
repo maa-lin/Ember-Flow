@@ -67,7 +67,7 @@ export const createAffirmation = async (type: string, text: string): Promise<Aff
     return dto;
 };
 
-export const updateAffirmation = async (id: string, type: string, text: string): Promise<AffirmationDto | null> => {
+export const updateAffirmation = async (id: string, type: string, text: string): Promise<AffirmationDto | null | "duplicate"> => {
     const affirmation = await Affirmation.findOne({ id: id });
 
     if (!affirmation) {
@@ -81,6 +81,12 @@ export const updateAffirmation = async (id: string, type: string, text: string):
     if (text) {
         affirmation.text = text.toLowerCase();
     };
+    
+    const isDuplicate = await Affirmation.findOne({ type: affirmation.type, text: affirmation.text });
+
+    if (isDuplicate) {
+        return "duplicate";
+    }
 
     await affirmation.save();
 

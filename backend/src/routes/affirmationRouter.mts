@@ -73,7 +73,7 @@ router.post("/", async (req: Request, res: Response) => {
             const affirmation = await createAffirmation(type, text);
 
             if (!affirmation) {
-                res.status(409).json({ status: "An affirmation with the exact same text already exists." });
+                res.status(409).json({ status: "An affirmation with the exact same type and text already exists." });
             } else {
                 res.status(201).json(affirmation);
             }
@@ -93,8 +93,12 @@ router.put("/id/:id", async (req: Request, res: Response) => {
         const affirmation = await updateAffirmation(id, type, text);
 
         if (!affirmation) {
-            res.status(400).json({ status: `No affirmation with id '${id}' was found.` })
+            res.status(400).json({ status: `No affirmation with id '${id}' was found.` });
         } else {
+            if (affirmation === "duplicate") {
+                res.status(400).json({ status: "An affirmation with the exact same type and text already exists" });
+            };
+
             res.status(200).json(affirmation);
         }
         
