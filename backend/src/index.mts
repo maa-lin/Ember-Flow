@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { json } from "express";
 import dotenv from "dotenv";
 import affirmationRouter from "./routes/affirmationRouter.mjs"
+import challengeRouter from "./routes/challengeRouter.mjs";
 
 dotenv.config();
 const port = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ const app = express();
 app.use(json());
 
 app.use("/affirmations", affirmationRouter);
+app.use("/challenges", challengeRouter)
 
 app.get("/ping", (req, res) => {
     res.status(200).json({ message: "Welcome!" });

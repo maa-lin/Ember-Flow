@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import express from "express";
 import { createAffirmation, deleteAffirmation, deleteAffirmationsByType, getAffirmation, getAffirmationById, getAffirmations, updateAffirmation } from "../controllers/affirmationController.mjs";
-import { DeleteResult } from "mongoose";
 
 const router = express.Router();
 
@@ -141,6 +140,6 @@ router.delete("/type/:type", async (req: Request, res: Response) => {
         res.status(500).send(error);
         console.error(error);
     }
-})
+});
 
 export default router;

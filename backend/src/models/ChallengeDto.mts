@@ -1,4 +1,4 @@
-export type AffirmationDto = {
+export type ChallengeDto = {
     id: string,
     mood: string,
     text: string,

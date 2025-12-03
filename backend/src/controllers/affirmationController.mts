@@ -10,7 +10,19 @@ const convertAffirmationDbToDto = (affirmation: AffirmationType): AffirmationDto
         type: affirmation.type,
         text: affirmation.text
     } satisfies AffirmationDto;
-}
+};
+
+export const getAffirmations = async (type: string): Promise<AffirmationDto[]> => {
+    let affirmations = await Affirmation.find();
+    
+    if (type) {
+        affirmations = affirmations.filter((a) => a.type === type.toLowerCase());
+    };
+
+    const dto = affirmations.map((a) => convertAffirmationDbToDto(a));
+
+    return dto;
+};
 
 export const getAffirmation = async (type: string): Promise<AffirmationDto | null> => {
     const result  = await Affirmation.aggregate([
@@ -25,18 +37,6 @@ export const getAffirmation = async (type: string): Promise<AffirmationDto | nul
     }
 
     const dto = convertAffirmationDbToDto(randomAffirmation);
-
-    return dto;
-};
-
-export const getAffirmations = async (type: string): Promise<AffirmationDto[]> => {
-    let affirmations = await Affirmation.find();
-    
-    if (type) {
-        affirmations = affirmations.filter((a) => a.type === type.toLowerCase());
-    };
-
-    const dto = affirmations.map((a) => convertAffirmationDbToDto(a));
 
     return dto;
 };
