@@ -6,6 +6,7 @@ type AffirmationType = InferSchemaType<typeof Affirmation.schema>;
 
 const convertAffirmationDbToDto = (affirmation: AffirmationType): AffirmationDto => {
     return{
+        id: affirmation.id,
         type: affirmation.type,
         text: affirmation.text
     } satisfies AffirmationDto;
