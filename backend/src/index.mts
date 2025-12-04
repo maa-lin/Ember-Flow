@@ -4,6 +4,7 @@ import { json } from "express";
 import dotenv from "dotenv";
 import affirmationRouter from "./routes/affirmationRouter.mjs"
 import challengeRouter from "./routes/challengeRouter.mjs";
+import cors from "cors";
 
 dotenv.config();
 const port = process.env.PORT || 3000;
@@ -14,6 +15,7 @@ if (!dbUrl) throw Error ("No MONGO_URL in .env");
 const app = express();
 
 app.use(json());
+app.use(cors());
 
 app.use("/affirmations", affirmationRouter);
 app.use("/challenges", challengeRouter)
