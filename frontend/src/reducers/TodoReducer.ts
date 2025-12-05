@@ -1,7 +1,6 @@
-import { act } from "react";
 import { Todo, type Todos } from "../models/Todo";
 
-type ActionTypes = "ADDED" | "DELETED" | "TOGGLED";
+type ActionTypes = "ADDED" | "TOGGLED";
 
 export type Action = {
     type: ActionTypes,
@@ -14,10 +13,6 @@ export const TodoReducer = (todos: Todos, action: Action): Todos => {
         case "ADDED":{
             return {...todos, [action.payload.todoType]: [...todos[action.payload.todoType], new Todo(action.payload.textOrId)]};
             
-        };
-
-        case "DELETED": {
-            return {...todos, [action.payload.todoType]: todos[action.payload.todoType].filter((f) => f.id !== action.payload.textOrId)};
         };
 
         case "TOGGLED": {
