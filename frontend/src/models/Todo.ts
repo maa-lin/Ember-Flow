@@ -3,7 +3,7 @@ export class Todo {
     text: string;
     isDone: boolean;
 
-    constructor(text: string) {
+    constructor(text: string, ) {
         this.id = crypto.randomUUID();
         this.text = text;
         this.isDone = false;
