@@ -1,4 +1,4 @@
-import { type Todos } from "../models/Todo";
+import { type List, type Lists } from "../models/List";
 
 export const ActionTypes = {
     TOGGLED: "TOGGLED",
@@ -8,29 +8,29 @@ export const ActionTypes = {
 
 export type ActionTypes = typeof ActionTypes[keyof typeof ActionTypes];
 
-export const TodoTypes = {
+export const ListTypes = {
     FOCUS: "focus",
     SELF_CARE: "selfCare"
 } as const;
 
-export type TodoTypes = typeof TodoTypes[keyof typeof TodoTypes];
+export type ListTypes = typeof ListTypes[keyof typeof ListTypes];
 
 export type Action = 
     | {
         type: typeof ActionTypes.UPDATED;
-        payload: { id: string, text: string, todoType: TodoTypes; }}
+        payload: { id: string, text: string, listType: ListTypes; }}
     | {
         type: typeof ActionTypes.TOGGLED;
-        payload: { id: string, todoType: TodoTypes; }}
+        payload: { id: string, listType: ListTypes; }}
     | {
         type: typeof ActionTypes.RESET;
     }
 
-export const TodoReducer = (todos: Todos, action: Action): Todos => {
+export const ListReducer = (lists: Lists, action: Action): Lists => {
 
     switch (action.type) {
         case "UPDATED": {
-            return {...todos, [action.payload.todoType]: todos[action.payload.todoType].map((t) => {
+            return {...lists, [action.payload.listType]: lists[action.payload.listType].map((t) => {
                 if (t.id === action.payload.id) {
                     return {...t, text: action.payload.text}
                 };
@@ -41,7 +41,7 @@ export const TodoReducer = (todos: Todos, action: Action): Todos => {
         };
 
         case "TOGGLED": {
-            return {...todos, [action.payload.todoType]: todos[action.payload.todoType].map((t) => {
+            return {...lists, [action.payload.listType]: lists[action.payload.listType].map((t) => {
                 if (t.id === action.payload.id) {
                     return {...t, isDone: !t.isDone}
                 };
@@ -52,12 +52,12 @@ export const TodoReducer = (todos: Todos, action: Action): Todos => {
 
         case "RESET": 
             return { 
-                focus: todos.focus.map(t => ({ ...t, text: "", isDone: false })),
-                selfCare: todos.selfCare.map(t => ({ ...t, text: "", isDone: false })),
+                focus: lists.focus.map(t => ({ ...t, text: "", isDone: false })),
+                selfCare: lists.selfCare.map(t => ({ ...t, text: "", isDone: false })),
         };
             
 
         default:
-            return todos;
+            return lists;
     };
 }

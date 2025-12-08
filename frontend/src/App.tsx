@@ -1,20 +1,20 @@
 import { useReducer } from "react";
 import "./App.css";
-import { TodoContext } from "./contexts/TodosContext";
-import { TodoReducer } from "./reducers/TodoReducer";
-import { Todos } from "./components/Todos/Todos";
-import { Todo } from "./models/Todo";
+import { ListReducer } from "./reducers/ListReducer"
+import { List } from "./models/List";
+import { ListContext } from "./contexts/ListContext";
+import { Lists } from "./components/Lists/Lists";
 
 function App() {
-  const [todos, dispatch] = useReducer(TodoReducer, {  
-    focus: [ new Todo( ""), new Todo( ""), new Todo( "") ], 
-    selfCare: [ new Todo( ""), new Todo( "") ] });
+  const [lists, dispatch] = useReducer(ListReducer, {  
+    focus: [ new List( ""), new List( ""), new List( "") ], 
+    selfCare: [ new List( ""), new List( "") ] });
 
   return (
     <>
-      <TodoContext.Provider value={{ todos, dispatch }}>
-        <Todos />
-      </TodoContext.Provider>
+      <ListContext.Provider value={{ lists, dispatch }}>
+        <Lists />
+      </ListContext.Provider>
     </>
   );
 }

@@ -1,4 +1,4 @@
-export class Todo {
+export class List {
     id: string;
     text: string;
     isDone: boolean;
@@ -10,7 +10,7 @@ export class Todo {
     }
 };
 
-export type Todos = {
-    focus: Todo[],
-    selfCare: Todo[]
+export type Lists = {
+    focus: List[],
+    selfCare: List[]
 };
