@@ -1,4 +1,4 @@
-export class List {
+export class ListItem {
     id: string;
     text: string;
     isDone: boolean;
@@ -11,6 +11,6 @@ export class List {
 };
 
 export type Lists = {
-    focus: List[],
-    selfCare: List[]
+    focus: ListItem[],
+    selfCare: ListItem[]
 };

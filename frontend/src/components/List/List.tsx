@@ -17,7 +17,7 @@ export const List = (props: ListProps) => {
         <form onSubmit={(e) => { e.preventDefault() }}>
             <ul>
                 {lists[props.listType].map((l, i) => 
-                    <UpdateListItems key={i} list={l} index={i} listType={props.listType}/>
+                    <UpdateListItems key={i} listItem={l} index={i} listType={props.listType}/>
                 )}
             </ul>
         </form>

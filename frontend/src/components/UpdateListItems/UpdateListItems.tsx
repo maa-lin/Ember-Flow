@@ -1,10 +1,10 @@
 import { useContext, useRef, useState } from "react"
-import type { List } from "../../models/List"
 import { ActionTypes, ListTypes } from "../../reducers/ListReducer"
 import { ListContext } from "../../contexts/ListContext"
+import type { ListItem } from "../../models/List"
 
 type UpdateListItemsProps = {
-    list: List,
+    listItem: ListItem,
     index: number,
     listType: ListTypes
 }
@@ -22,16 +22,16 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
 
         dispatch({
             type: ActionTypes.UPDATED,
-            payload: { id: props.list.id, text: text, listType: props.listType}
+            payload: { id: props.listItem.id, text: text, listType: props.listType}
         });
     };
 
     const toggleListItem = () => {
-        if (isEditing || !props.list.text.trim()) return;
+        if (isEditing || !props.listItem.text.trim()) return;
 
         dispatch({
             type: ActionTypes.TOGGLED,
-            payload: { id: props.list.id, listType: props.listType }
+            payload: { id: props.listItem.id, listType: props.listType }
         });
     };
 
@@ -67,8 +67,8 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
             <label>
                 <input 
                     type="checkbox"
-                    checked={props.list.isDone}
-                    disabled={isEditing || !props.list.text.trim()}
+                    checked={props.listItem.isDone}
+                    disabled={isEditing || !props.listItem.text.trim()}
                     onChange={toggleListItem}
                     onClick={(e) => { e.stopPropagation() }}  //Stops onClick on <li> so toggle is not triggered twice.
                  />
@@ -80,7 +80,7 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
                 <input 
                     ref={inputRef}
                     type="text"
-                    value={props.list.text} 
+                    value={props.listItem.text} 
                     readOnly={!isEditing}
                     onChange={(e) => { updateListItem(e.target.value) }}
                     onBlur={handleOnBlur}

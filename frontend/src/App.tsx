@@ -1,19 +1,19 @@
 import { useEffect, useReducer } from "react";
 import "./App.css";
 import { ListReducer } from "./reducers/ListReducer";
-import { List } from "./models/List";
 import { ListContext } from "./contexts/ListContext";
 import { Lists } from "./components/Lists/Lists";
-import { getListFromLocalStorage, saveListToLocalStorage } from "./utils/localStorage";
+import { getListFromLocalStorage, saveListsToLocalStorage } from "./utils/localStorage";
+import { ListItem } from "./models/List";
 
 function App() {
   const [lists, dispatch] = useReducer(ListReducer, getListFromLocalStorage() || {
-    focus: [new List(""), new List(""), new List("")],
-    selfCare: [new List(""), new List("")]
+    focus: [new ListItem(""), new ListItem(""), new ListItem("")],
+    selfCare: [new ListItem(""), new ListItem("")]
   });
 
   useEffect(() => {
-    saveListToLocalStorage(lists);
+    saveListsToLocalStorage(lists);
   }, [lists] );
 
   return (

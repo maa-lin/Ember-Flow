@@ -1,7 +1,7 @@
 import type { Lists } from "../models/List";
 
-export const saveListToLocalStorage = (list: Lists) => {
-    localStorage.setItem("lists", JSON.stringify(list));
+export const saveListsToLocalStorage = (lists: Lists) => {
+    localStorage.setItem("lists", JSON.stringify(lists));
     localStorage.setItem("lastUpdated", Date.now().toString());
 };
 

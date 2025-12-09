@@ -1,4 +1,4 @@
-import { type List, type Lists } from "../models/List";
+import { type Lists } from "../models/List";
 
 export const ActionTypes = {
     TOGGLED: "TOGGLED",
