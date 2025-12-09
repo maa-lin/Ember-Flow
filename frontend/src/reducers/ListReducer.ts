@@ -1,4 +1,4 @@
-import { type Lists } from "../models/List";
+import { ListItem, type Lists } from "../models/List";
 
 export const ActionTypes = {
     TOGGLED: "TOGGLED",
@@ -51,10 +51,10 @@ export const ListReducer = (lists: Lists, action: Action): Lists => {
         };
 
         case "RESET": 
-            return { 
-                focus: lists.focus.map(t => ({ ...t, text: "", isDone: false })),
-                selfCare: lists.selfCare.map(t => ({ ...t, text: "", isDone: false })),
-        };
+            return {
+                focus: [new ListItem(""), new ListItem(""), new ListItem("")],
+                selfCare: [new ListItem(""), new ListItem("")]
+              };
             
 
         default:

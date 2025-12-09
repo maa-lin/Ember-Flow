@@ -1,6 +1,6 @@
 import { getTimeStampFromLocalStorage } from "./localStorage";
 
-export const checkTimeStamp = () => {
+export const checkIfNewDay = () => {
     const timeStamp = getTimeStampFromLocalStorage();
 
     if (!timeStamp) return false;
@@ -12,4 +12,4 @@ export const checkTimeStamp = () => {
     resetTime.setHours(3,0,0,0);
 
     return lastUpdated < resetTime && resetTime >= now;
-}
+};
