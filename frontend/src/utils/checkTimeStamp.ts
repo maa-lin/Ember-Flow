@@ -11,5 +11,10 @@ export const checkIfNewDay = () => {
     const resetTime = new Date;
     resetTime.setHours(3,0,0,0);
 
-    return lastUpdated < resetTime && resetTime >= now;
+    // If time right now is before 03.00, treat reset time as yesterday's 03.00.
+    if (now < resetTime) {
+        resetTime.setDate(resetTime.getDate() - 1)
+    };
+
+    return lastUpdated < resetTime;
 };

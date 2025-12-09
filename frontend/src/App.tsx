@@ -2,10 +2,11 @@ import { useEffect, useReducer } from "react";
 import "./App.css";
 import { ActionTypes, ListReducer } from "./reducers/ListReducer";
 import { ListContext } from "./contexts/ListContext";
-import { Lists } from "./components/Lists/Lists";
 import { getListFromLocalStorage, saveListsToLocalStorage } from "./utils/localStorage";
 import { ListItem } from "./models/List";
 import { checkIfNewDay } from "./utils/checkTimeStamp";
+import { router } from "./Router";
+import { RouterProvider } from "react-router";
 
 function App() {
   const [lists, dispatch] = useReducer(ListReducer, getListFromLocalStorage() || {
@@ -50,7 +51,7 @@ function App() {
   return (
     <>
       <ListContext.Provider value={{ lists, dispatch }}>
-        <Lists />
+        <RouterProvider router={router} />
       </ListContext.Provider>
     </>
   );
