@@ -1,6 +1,8 @@
+import { HelpModal } from "../components/HelpModal/HelpModal";
+
 export const Help = () => {
 
     return <>
-        <h1>help</h1>
+        <HelpModal />
     </>
 };
