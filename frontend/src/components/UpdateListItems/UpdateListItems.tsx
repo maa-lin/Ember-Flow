@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from "react"
 import { ActionTypes, ListTypes } from "../../reducers/ListReducer"
 import { ListContext } from "../../contexts/ListContext"
 import type { ListItem } from "../../models/List"
+import { AffirmationModal } from "../AffirmationModal/AffirmationModal"
 
 type UpdateListItemsProps = {
     listItem: ListItem,
@@ -14,6 +15,7 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
     const { dispatch } = useContext(ListContext);
 
     const [isEditing, setIsEditing] = useState<boolean>(false);
+    const [showAffirmation, setShowAffirmation] = useState<boolean>(false);
     
     const inputRef = useRef<HTMLInputElement | null>(null); //Holds an input element from the DOM and gives direct access to it, used to shift focus on inputs.
 
@@ -33,6 +35,10 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
             type: ActionTypes.TOGGLED,
             payload: { id: props.listItem.id, listType: props.listType }
         });
+
+        if (!props.listItem.isDone) {
+            setShowAffirmation(true);
+        }
     };
 
     const startEditing = () => {
@@ -99,5 +105,7 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
             >
                 {isEditing ? "✔️" : "✏️"}
             </button>
+
+            <AffirmationModal isOpen={showAffirmation} onClose={() => { setShowAffirmation(false) }} listType={props.listType} />
     </li>
 }
