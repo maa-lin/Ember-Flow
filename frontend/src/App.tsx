@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import "./App.css";
 import { ActionTypes, ListReducer } from "./reducers/ListReducer";
 import { ListContext } from "./contexts/ListContext";
@@ -7,8 +7,13 @@ import { ListItem } from "./models/List";
 import { checkIfNewDay } from "./utils/checkTimeStamp";
 import { router } from "./Router";
 import { RouterProvider } from "react-router";
+import { MoodContext } from "./contexts/MoodContext";
+import type { Mood } from "./models/IMoodContext";
 
 function App() {
+
+  const [mood, setMood] = useState<Mood>(null);
+
   const [lists, dispatch] = useReducer(ListReducer, getListFromLocalStorage() || {
     focus: [new ListItem(""), new ListItem(""), new ListItem("")],
     selfCare: [new ListItem(""), new ListItem("")]
@@ -19,9 +24,8 @@ function App() {
   }, [lists] );
 
   useEffect(() => {
-    const isNewDay = checkIfNewDay();
 
-    if (isNewDay) { // Check if daily reset-time has passed (03.00) on app-load.
+    if (checkIfNewDay()) { // Check if daily reset-time has passed (03.00) on app-load.
       dispatch({
         type: ActionTypes.RESET
       });
@@ -31,7 +35,7 @@ function App() {
     // in case the app stays open for a longer time without reloading.
     const handleVisibility = () => { 
       if (document.visibilityState === "visible") {
-        if (isNewDay) {
+        if (checkIfNewDay()) {
           dispatch({
             type: ActionTypes.RESET
           });
@@ -50,9 +54,11 @@ function App() {
 
   return (
     <>
-      <ListContext.Provider value={{ lists, dispatch }}>
-        <RouterProvider router={router} />
-      </ListContext.Provider>
+      <MoodContext.Provider value={{ mood, setMood }}>
+        <ListContext.Provider value={{ lists, dispatch }}>
+          <RouterProvider router={router} />
+        </ListContext.Provider>
+      </MoodContext.Provider>
     </>
   );
 }

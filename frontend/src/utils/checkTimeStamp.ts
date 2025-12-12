@@ -3,7 +3,7 @@ import { getTimeStampFromLocalStorage } from "./localStorage";
 export const checkIfNewDay = () => {
     const timeStamp = getTimeStampFromLocalStorage();
 
-    if (!timeStamp) return false;
+    if (!timeStamp) return true;
 
     const lastUpdated = new Date(timeStamp);
     const now = new Date();

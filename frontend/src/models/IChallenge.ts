@@ -3,4 +3,4 @@ export interface IChallenge {
     mood: string,
     text: string,
     affirmation: string
-}
+};
