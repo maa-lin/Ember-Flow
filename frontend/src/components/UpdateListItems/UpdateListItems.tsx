@@ -1,8 +1,8 @@
 import { useContext, useRef, useState } from "react"
 import { ActionTypes, ListTypes } from "../../reducers/ListReducer"
-import { ListContext } from "../../contexts/ListContext"
 import type { ListItem } from "../../models/List"
 import { AffirmationModal } from "../AffirmationModal/AffirmationModal"
+import { DailyStateContext } from "../../contexts/DailyStateContext"
 
 type UpdateListItemsProps = {
     listItem: ListItem,
@@ -12,7 +12,7 @@ type UpdateListItemsProps = {
 
 export const UpdateListItems = (props: UpdateListItemsProps) => {
 
-    const { dispatch } = useContext(ListContext);
+    const { dispatch } = useContext(DailyStateContext);
 
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [showAffirmation, setShowAffirmation] = useState<boolean>(false);

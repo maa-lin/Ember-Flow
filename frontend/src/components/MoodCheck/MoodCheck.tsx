@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { NavLink } from "react-router";
 import { MoodContext } from "../../contexts/MoodContext";
 import type { Mood } from "../../models/IMoodContext";
+import { saveMoodToLocalStorage } from "../../utils/localStorage";
 
 export const MoodCheck = () => {
 
@@ -11,12 +12,12 @@ export const MoodCheck = () => {
         return null;
     };
 
-
     const handleClick = (mood: Mood) => {
         moodContext.setMood(mood);
+        saveMoodToLocalStorage(mood);
     };
 
-    console.log(moodContext.mood)
+    console.log(moodContext.mood);
 
     return <div>
         <h1>Mood check-in</h1>

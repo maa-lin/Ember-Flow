@@ -1,27 +1,31 @@
-import { useContext, useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "./App.css";
-import { ActionTypes, ListReducer } from "./reducers/ListReducer";
-import { ListContext } from "./contexts/ListContext";
-import { getListFromLocalStorage, saveListsToLocalStorage } from "./utils/localStorage";
+import { ActionTypes, DailyStateReducer } from "./reducers/ListReducer";
+import { getListFromLocalStorage, getMoodFromLocalStorage, saveListsToLocalStorage } from "./utils/localStorage";
 import { ListItem } from "./models/List";
 import { checkIfNewDay } from "./utils/checkTimeStamp";
 import { router } from "./Router";
 import { RouterProvider } from "react-router";
 import { MoodContext } from "./contexts/MoodContext";
 import type { Mood } from "./models/IMoodContext";
+import { DailyStateContext } from "./contexts/DailyStateContext";
 
 function App() {
 
-  const [mood, setMood] = useState<Mood>(null);
+  const [mood, setMood] = useState<Mood>(getMoodFromLocalStorage());
+  console.log(mood);
 
-  const [lists, dispatch] = useReducer(ListReducer, getListFromLocalStorage() || {
-    focus: [new ListItem(""), new ListItem(""), new ListItem("")],
-    selfCare: [new ListItem(""), new ListItem("")]
-  });
+  const [dailyState, dispatch] = useReducer(DailyStateReducer, getListFromLocalStorage() || {
+        lists: { 
+            focus: [ new ListItem(""), new ListItem(""), new ListItem("") ], 
+            selfCare: [ new ListItem(""), new ListItem("") ] 
+        },
+        challenge: null
+});
 
   useEffect(() => {
-    saveListsToLocalStorage(lists);
-  }, [lists] );
+    saveListsToLocalStorage(dailyState);
+  }, [dailyState] );
 
   useEffect(() => {
 
@@ -29,6 +33,8 @@ function App() {
       dispatch({
         type: ActionTypes.RESET
       });
+
+      setMood(null);
     };
 
     // Also check reset-time when tab becomes visible again, 
@@ -55,9 +61,9 @@ function App() {
   return (
     <>
       <MoodContext.Provider value={{ mood, setMood }}>
-        <ListContext.Provider value={{ lists, dispatch }}>
+        <DailyStateContext.Provider value={{ dailyState, dispatch }}>
           <RouterProvider router={router} />
-        </ListContext.Provider>
+        </DailyStateContext.Provider>
       </MoodContext.Provider>
     </>
   );

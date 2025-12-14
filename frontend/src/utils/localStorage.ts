@@ -1,22 +1,25 @@
+import type { DailyState } from "../models/DailyState";
 import type { Mood } from "../models/IMoodContext";
-import type { Lists } from "../models/List";
 
-export const saveListsToLocalStorage = (lists: Lists) => {
-  localStorage.setItem("lists", JSON.stringify(lists));
+//Lists and timestamp
+export const saveListsToLocalStorage = (dailyState: DailyState) => {
+  localStorage.setItem("dailyState", JSON.stringify(dailyState));
   localStorage.setItem("lastUpdated", Date.now().toString());
 };
 
 export const getListFromLocalStorage = () => {
-  const foundValue = localStorage.getItem("lists");
+  const foundValue = localStorage.getItem("dailyState");
 
   if (!foundValue) return null;
 
   try {
-    const listsFromLs: Lists = JSON.parse(foundValue);
+    const dailyStateFromLs: DailyState = JSON.parse(foundValue);
 
-    if (!listsFromLs.focus || !listsFromLs.selfCare) return null;
-
-    return listsFromLs;
+    if (!dailyStateFromLs) return null;
+    
+    if (!dailyStateFromLs.lists.focus || !dailyStateFromLs.lists.selfCare) return null;  
+    
+    return dailyStateFromLs;
   } catch {
     return null;
   }
@@ -34,8 +37,9 @@ export const getTimeStampFromLocalStorage = () => {
   }
 };
 
+//Mood
 export const saveMoodToLocalStorage = (mood: Mood) => {
-  localStorage.setItem("mood", JSON.stringify(mood));
+    localStorage.setItem("mood", JSON.stringify(mood));
 };
 
 export const getMoodFromLocalStorage = () => {
@@ -55,7 +59,7 @@ export const getMoodFromLocalStorage = () => {
     ) return mood;
 
     return null;
-    
+
   } catch (error) {
     return null;
   }

@@ -1,8 +1,8 @@
 import type { Dispatch } from "react";
-import type { Lists } from "./List";
 import type { Action } from "../reducers/ListReducer";
+import type { DailyState } from "./DailyState";
 
-export interface IListContext {
-    lists: Lists;
+export interface IDailyStateContext {
+    dailyState: DailyState;
     dispatch: Dispatch<Action>;
 }
