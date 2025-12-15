@@ -7,7 +7,7 @@ export const saveListsToLocalStorage = (dailyState: DailyState) => {
   localStorage.setItem("lastUpdated", Date.now().toString());
 };
 
-export const getListFromLocalStorage = () => {
+export const getDailyStateFromLocalStorage = () => {
   const foundValue = localStorage.getItem("dailyState");
 
   if (!foundValue) return null;

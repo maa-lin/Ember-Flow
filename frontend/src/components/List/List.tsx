@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UpdateListItems } from "../UpdateListItems/UpdateListItems";
-import type { ListTypes } from "../../reducers/ListReducer";
+import type { ListTypes } from "../../reducers/DailyStateReducer";
 import { DailyStateContext } from "../../contexts/DailyStateContext";
 
 type ListProps = {

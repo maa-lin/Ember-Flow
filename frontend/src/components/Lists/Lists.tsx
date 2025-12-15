@@ -1,4 +1,4 @@
-import { ListTypes } from "../../reducers/ListReducer";
+import { ListTypes } from "../../reducers/DailyStateReducer";
 import { List } from "../List/List";
 
 export const Lists = () => {

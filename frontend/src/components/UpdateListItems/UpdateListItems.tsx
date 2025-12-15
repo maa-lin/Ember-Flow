@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react"
-import { ActionTypes, ListTypes } from "../../reducers/ListReducer"
+import { ActionTypes, ListTypes } from "../../reducers/DailyStateReducer"
 import type { ListItem } from "../../models/List"
 import { AffirmationModal } from "../AffirmationModal/AffirmationModal"
 import { DailyStateContext } from "../../contexts/DailyStateContext"

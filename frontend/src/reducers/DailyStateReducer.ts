@@ -1,4 +1,6 @@
+import { Challenge } from "../components/Challenge/Challenge";
 import type { DailyState } from "../models/DailyState";
+import type { IChallenge } from "../models/IChallenge";
 import { ListItem, type Lists } from "../models/List";
 
 export const ActionTypes = {
@@ -28,7 +30,7 @@ export type Action =
     }
   | {
       type: typeof ActionTypes.CHALLENGE_SET;
-      payload: {};
+      payload: IChallenge;
     }
   | {
       type: typeof ActionTypes.RESET;
@@ -62,7 +64,8 @@ export const DailyStateReducer = (dailyState: DailyState, action: Action): Daily
     }
 
     case "CHALLENGE_SET": {
-    }
+      return { ...dailyState, challenge: action.payload };
+    };
 
     case "RESET":
       return {

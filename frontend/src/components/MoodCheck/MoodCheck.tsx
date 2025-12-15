@@ -8,9 +8,7 @@ export const MoodCheck = () => {
 
     const moodContext = useContext(MoodContext);
 
-    if (!moodContext) {
-        return null;
-    };
+    if (!moodContext) return null;
 
     const handleClick = (mood: Mood) => {
         moodContext.setMood(mood);

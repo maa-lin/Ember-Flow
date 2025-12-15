@@ -3,6 +3,7 @@ import { Lists } from "../components/Lists/Lists";
 import { TopBar } from "../components/TopBar/TopBar";
 import { MoodContext } from "../contexts/MoodContext";
 import { Navigate } from "react-router";
+import { Challenge } from "../components/Challenge/Challenge";
 
 export const Home = () => {
 
@@ -15,6 +16,7 @@ export const Home = () => {
     return <>
         <TopBar />
         <main>
+            <Challenge />
             <Lists />
         </main>
     </>

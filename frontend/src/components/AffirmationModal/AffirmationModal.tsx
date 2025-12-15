@@ -1,5 +1,5 @@
 import { data, NavLink } from "react-router";
-import type { ListTypes } from "../../reducers/ListReducer";
+import type { ListTypes } from "../../reducers/DailyStateReducer";
 import { useEffect, useState } from "react";
 import type { IAffirmation } from "../../models/IAffirmation";
 import { getAffirmation } from "../../services/affirmationService";

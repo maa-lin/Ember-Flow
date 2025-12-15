@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import "./App.css";
-import { ActionTypes, DailyStateReducer } from "./reducers/ListReducer";
-import { getListFromLocalStorage, getMoodFromLocalStorage, saveListsToLocalStorage } from "./utils/localStorage";
+import { ActionTypes, DailyStateReducer } from "./reducers/DailyStateReducer";
+import { getDailyStateFromLocalStorage, getMoodFromLocalStorage, saveListsToLocalStorage, saveMoodToLocalStorage } from "./utils/localStorage";
 import { ListItem } from "./models/List";
 import { checkIfNewDay } from "./utils/checkTimeStamp";
 import { router } from "./Router";
@@ -15,7 +15,7 @@ function App() {
   const [mood, setMood] = useState<Mood>(getMoodFromLocalStorage());
   console.log(mood);
 
-  const [dailyState, dispatch] = useReducer(DailyStateReducer, getListFromLocalStorage() || {
+  const [dailyState, dispatch] = useReducer(DailyStateReducer, getDailyStateFromLocalStorage() || {
         lists: { 
             focus: [ new ListItem(""), new ListItem(""), new ListItem("") ], 
             selfCare: [ new ListItem(""), new ListItem("") ] 
@@ -35,6 +35,7 @@ function App() {
       });
 
       setMood(null);
+      saveMoodToLocalStorage(null);
     };
 
     // Also check reset-time when tab becomes visible again, 
