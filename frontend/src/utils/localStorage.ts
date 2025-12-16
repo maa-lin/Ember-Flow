@@ -1,8 +1,9 @@
 import type { DailyState } from "../models/DailyState";
 import type { Mood } from "../models/IMoodContext";
+import type { ThemeKey } from "../models/Theme";
 
-//Lists and timestamp
-export const saveListsToLocalStorage = (dailyState: DailyState) => {
+//DailyState and timestamp
+export const saveDailyStateToLocalStorage = (dailyState: DailyState) => {
   localStorage.setItem("dailyState", JSON.stringify(dailyState));
   localStorage.setItem("lastUpdated", Date.now().toString());
 };
@@ -13,7 +14,7 @@ export const getDailyStateFromLocalStorage = () => {
   if (!foundValue) return null;
 
   try {
-    const dailyStateFromLs: DailyState = JSON.parse(foundValue);
+    const dailyStateFromLs = JSON.parse(foundValue);
 
     if (!dailyStateFromLs) return null;
     
@@ -48,7 +49,7 @@ export const getMoodFromLocalStorage = () => {
   if (!foundValue) return null;
 
   try {
-    const mood: Mood = JSON.parse(foundValue);
+    const mood = JSON.parse(foundValue);
 
     if (
       mood === "calm" ||
@@ -60,6 +61,28 @@ export const getMoodFromLocalStorage = () => {
 
     return null;
 
+  } catch (error) {
+    return null;
+  }
+};
+
+// Theme 
+export const saveThemeToLocalStorage = (theme: ThemeKey) => {
+  localStorage.setItem("theme", JSON.stringify(theme));
+};
+
+export const getThemeFromLocalStorage = () => {
+  const foundValue = localStorage.getItem("theme");
+
+  if (!foundValue) return null;
+
+  try {
+    const theme = JSON.parse(foundValue);
+
+    if (theme === "sunrise" || theme === "sunset") return theme;
+
+    return null;
+    
   } catch (error) {
     return null;
   }

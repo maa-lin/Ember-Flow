@@ -1,7 +1,6 @@
 import { useEffect, useReducer, useState } from "react";
-import "./App.css";
-import { ActionTypes, DailyStateReducer } from "./reducers/DailyStateReducer";
-import { getDailyStateFromLocalStorage, getMoodFromLocalStorage, saveListsToLocalStorage, saveMoodToLocalStorage } from "./utils/localStorage";
+import { DailyStateReducer } from "./reducers/DailyStateReducer";
+import { getDailyStateFromLocalStorage, getMoodFromLocalStorage, getThemeFromLocalStorage, saveDailyStateToLocalStorage } from "./utils/localStorage";
 import { ListItem } from "./models/List";
 import { checkIfNewDay } from "./utils/checkTimeStamp";
 import { router } from "./Router";
@@ -9,11 +8,16 @@ import { RouterProvider } from "react-router";
 import { MoodContext } from "./contexts/MoodContext";
 import type { Mood } from "./models/IMoodContext";
 import { DailyStateContext } from "./contexts/DailyStateContext";
+import { ThemeContext } from "./contexts/ThemeContext";
+import type { ThemeKey } from "./models/Theme";
+import { dailyReset } from "./utils/dailyReset";
 
 function App() {
 
   const [mood, setMood] = useState<Mood>(getMoodFromLocalStorage());
   console.log(mood);
+
+  const [theme, setTheme] = useState<ThemeKey>(getThemeFromLocalStorage() || "sunrise");
 
   const [dailyState, dispatch] = useReducer(DailyStateReducer, getDailyStateFromLocalStorage() || {
         lists: { 
@@ -24,18 +28,14 @@ function App() {
 });
 
   useEffect(() => {
-    saveListsToLocalStorage(dailyState);
+    if (checkIfNewDay()) return;
+    saveDailyStateToLocalStorage(dailyState);
   }, [dailyState] );
 
   useEffect(() => {
 
     if (checkIfNewDay()) { // Check if daily reset-time has passed (03.00) on app-load.
-      dispatch({
-        type: ActionTypes.RESET
-      });
-
-      setMood(null);
-      saveMoodToLocalStorage(null);
+      dailyReset(dispatch, setMood);
     };
 
     // Also check reset-time when tab becomes visible again, 
@@ -43,9 +43,7 @@ function App() {
     const handleVisibility = () => { 
       if (document.visibilityState === "visible") {
         if (checkIfNewDay()) {
-          dispatch({
-            type: ActionTypes.RESET
-          });
+          dailyReset(dispatch, setMood);
         };
       }
     };
@@ -61,11 +59,13 @@ function App() {
 
   return (
     <>
+    <ThemeContext.Provider value={{theme, setTheme}}>
       <MoodContext.Provider value={{ mood, setMood }}>
         <DailyStateContext.Provider value={{ dailyState, dispatch }}>
           <RouterProvider router={router} />
         </DailyStateContext.Provider>
       </MoodContext.Provider>
+    </ThemeContext.Provider>
     </>
   );
 }

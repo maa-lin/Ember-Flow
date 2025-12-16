@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Lists } from "../components/Lists/Lists";
-import { TopBar } from "../components/TopBar/TopBar";
 import { MoodContext } from "../contexts/MoodContext";
 import { Navigate } from "react-router";
 import { Challenge } from "../components/Challenge/Challenge";
+import { Header } from "../components/Header/Header";
 
 export const Home = () => {
 
@@ -14,7 +14,7 @@ export const Home = () => {
     };
 
     return <>
-        <TopBar />
+        <Header />
         <main>
             <Challenge />
             <Lists />
