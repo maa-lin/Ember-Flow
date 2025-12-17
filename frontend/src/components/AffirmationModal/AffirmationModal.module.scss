@@ -1,0 +1,47 @@
+.affirmation-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background-color: white;
+  padding: 5rem 2rem;
+
+  .affirmation {
+    font-size: 1.6rem;
+    padding-bottom: 3rem;
+    font-family: "Cormorant Garamond", Cambria, "Times New Roman", serif;
+  }
+
+  .prompt {
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    width: 150px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    background-color: rgb(230, 230, 230);
+
+    &:active,
+    &:visited,
+    &:link {
+      color: black;
+    }
+  }
+
+  .secondary {
+    background-color: transparent;
+    border: 1px solid darkgray;
+  }
+
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: rgb(128, 104, 19);
+  }
+}

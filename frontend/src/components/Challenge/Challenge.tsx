@@ -7,6 +7,7 @@ import styles from "./Challenge.module.scss";
 import { AffirmationModal } from "../AffirmationModal/AffirmationModal";
 import { getChallengeIsCompletedToLocalStorage, saveChallengeIsCompletedToLocalStorage } from "../../utils/localStorage";
 import { FaStar } from "react-icons/fa6";
+import { MdAutoAwesome } from "react-icons/md";
 
 export const Challenge = () => {
   const moodContext = useContext(MoodContext);
@@ -51,7 +52,7 @@ export const Challenge = () => {
   return (
     <div className={styles.challenge}>
       
-      <h2><FaStar />Daily Challenge</h2>
+      <h2><MdAutoAwesome />Daily Challenge</h2>
       {!completedToday ? (
         <>
           <p>{loading ? "Loading..." : dailyState?.challenge?.text}</p>
