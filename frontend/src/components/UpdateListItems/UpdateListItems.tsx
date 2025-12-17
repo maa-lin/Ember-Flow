@@ -1,8 +1,8 @@
 import { useContext, useRef, useState } from "react"
-import { ActionTypes, ListTypes } from "../../reducers/DailyStateReducer"
 import type { ListItem } from "../../models/List"
-import { AffirmationModal } from "../AffirmationModal/AffirmationModal"
 import { DailyStateContext } from "../../contexts/DailyStateContext"
+import { ActionTypes, type ListTypes } from "../../reducers/DailyStateReducer"
+import { GetListAffirmation } from "../GetListAffirmation/GetListAffirmation"
 
 type UpdateListItemsProps = {
     listItem: ListItem,
@@ -106,6 +106,6 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
                 {isEditing ? "✔️" : "✏️"}
             </button>
 
-            <AffirmationModal isOpen={showAffirmation} onClose={() => { setShowAffirmation(false) }} listType={props.listType} />
+            <GetListAffirmation isOpen={showAffirmation} onClose={() => { setShowAffirmation(false) }} listType={props.listType} />
     </li>
 }

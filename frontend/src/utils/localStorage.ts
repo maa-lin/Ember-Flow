@@ -87,3 +87,18 @@ export const getThemeFromLocalStorage = () => {
     return null;
   }
 };
+
+//Challenge
+export const saveChallengeIsCompletedToLocalStorage = (isCompleted: boolean) => {
+  localStorage.setItem("challengeCompleted", JSON.stringify(isCompleted));
+};
+
+export const getChallengeIsCompletedToLocalStorage = () => {
+  const foundValue = localStorage.getItem("challengeCompleted");
+
+  if (foundValue === "true") {
+    return true;
+  } else {
+    return false;
+  };
+}
