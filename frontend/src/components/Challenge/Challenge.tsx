@@ -5,9 +5,10 @@ import { DailyStateContext } from "../../contexts/DailyStateContext";
 import { ActionTypes } from "../../reducers/DailyStateReducer";
 import styles from "./Challenge.module.scss";
 import { AffirmationModal } from "../AffirmationModal/AffirmationModal";
-import { getChallengeIsCompletedToLocalStorage, saveChallengeIsCompletedToLocalStorage } from "../../utils/localStorage";
-import { FaStar } from "react-icons/fa6";
+import { getChallengeStatusFromLocalStorage, saveChallengeStatusToLocalStorage } from "../../utils/localStorage";
 import { MdAutoAwesome } from "react-icons/md";
+
+export type ChallengeStatus = "active" | "completed" | "skipped";
 
 export const Challenge = () => {
   const moodContext = useContext(MoodContext);
@@ -17,7 +18,7 @@ export const Challenge = () => {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [showAffirmation, setShowAffirmation] = useState<boolean>(false);
-  const [completedToday, setCompletedToday] = useState<boolean>(getChallengeIsCompletedToLocalStorage());
+  const [status, setStatus] = useState<ChallengeStatus>(getChallengeStatusFromLocalStorage());
 
   useEffect(() => {
     const getData = async () => {
@@ -43,29 +44,39 @@ export const Challenge = () => {
     getData();
   }, [moodContext.mood]);
 
-  const handleOnClick = () => {
-    setShowAffirmation(true);
-    setCompletedToday(true);
-    saveChallengeIsCompletedToLocalStorage(true);
+  const handleCompleteOnClick = (status: ChallengeStatus) => {
+    if (status === "completed") {
+      setShowAffirmation(true);
+    };
+    
+    setStatus(status);
+    saveChallengeStatusToLocalStorage(status);
   };
 
   return (
     <div className={styles.challenge}>
       
       <h2><MdAutoAwesome />Daily Challenge</h2>
-      {!completedToday ? (
+      {status === "active" && 
         <>
           <p>{loading ? "Loading..." : dailyState?.challenge?.text}</p>
           <div className={styles["btn-container"]}>
-            <button onClick={handleOnClick}>I did this!</button>
-            <button>Skip</button>
+            <button onClick={() => handleCompleteOnClick("completed")}>I did this!</button>
+            <button onClick={() => handleCompleteOnClick("skipped")}>Skip</button>
           </div>
         </>
-      ) : (
-        <small>
-          You completed today´s challenge. Come back tomorrow for a new one.
-        </small>
-      ) }
+      }
+
+      {status === "completed" && <p>
+          You completed today’s challenge. Come back tomorrow for a new one.
+        </p>
+      }
+
+      {status === "skipped" && <p>
+          A new one will be waiting for you tomorrow.
+        </p>
+      } 
+
       {showAffirmation && dailyState.challenge && (
         <AffirmationModal
           onClose={() => setShowAffirmation(false)}

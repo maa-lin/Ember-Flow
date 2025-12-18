@@ -1,33 +1,67 @@
-import { useContext } from "react"
-import { NavLink } from "react-router";
+import { useContext, useState } from "react";
 import { MoodContext } from "../../contexts/MoodContext";
 import type { Mood } from "../../models/IMoodContext";
 import { saveMoodToLocalStorage } from "../../utils/localStorage";
+import styles from "./MoodCheck.module.scss";
+import {
+  FaFaceLaughBeam,
+  FaFaceMeh,
+  FaFaceSmile,
+  FaFaceTired,
+} from "react-icons/fa6";
+import { useNavigate } from "react-router";
 
 export const MoodCheck = () => {
+  const moodContext = useContext(MoodContext);
+  const navigate = useNavigate();
 
-    const moodContext = useContext(MoodContext);
+  if (!moodContext) return null;
 
-    if (!moodContext) return null;
+  const handleClick = (mood: Mood) => {
+    moodContext.setMood(mood);
+    saveMoodToLocalStorage(mood);
+  };
 
-    const handleClick = (mood: Mood) => {
-        moodContext.setMood(mood);
-        saveMoodToLocalStorage(mood);
-    };
+  console.log(moodContext.mood);
 
-    console.log(moodContext.mood);
+  return (
+    <div className={styles["mood-check"]}>
+      <h1>How are you feeling today?</h1>
+      <p>Take a moment to check in with yourself.</p>
+      <ul>
+        <li>
+          <button onClick={() => handleClick("happy")}>
+            <FaFaceLaughBeam className={`${styles["mood-icon"]} ${moodContext.mood === "happy" ? styles.selected : ""}`} />
+            Happy
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleClick("calm")}>
+            <FaFaceSmile className={`${styles["mood-icon"]} ${moodContext.mood === "calm" ? styles.selected : ""}`} />
+            Calm
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleClick("neutral")}>
+            <FaFaceMeh className={`${styles["mood-icon"]} ${moodContext.mood === "neutral" ? styles.selected : ""}`} />
+            Neutral
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleClick("stressed")}>
+            <FaFaceTired className={`${styles["mood-icon"]} ${moodContext.mood === "stressed" ? styles.selected : ""}`} />
+            Stressed
+          </button>
+        </li>
+      </ul>
 
-    return <div>
-        <h1>Mood check-in</h1>
-        <h2>Welcome back - what is your mood today?</h2>
-        <ul>
-            <li><button onClick={() => handleClick("happy")}>😀 Happy</button></li>
-            <li><button onClick={() => handleClick("calm")}>😌 Calm</button></li>
-            <li><button onClick={() => handleClick("neutral")}>😐 Neutral</button></li>
-            <li><button onClick={() => handleClick("stressed")}>😥 Stressed</button></li>
-        </ul>
-
-        {moodContext.mood && <NavLink to={"/"}>Start your day</NavLink>}
-        
+      <button
+        className="btn"
+        disabled={!moodContext.mood}
+        onClick={() => navigate("/", { replace: true })}
+      >
+        Start your day
+      </button>
     </div>
-}
+  );
+};

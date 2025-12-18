@@ -8,7 +8,7 @@ export const Header = () => {
     return <header className={styles.header}>
         <ThemeToggle />
         <nav>
-            <span className={styles.help}>
+            <span className={styles["help-icon"]}>
                 <NavLink to={"/help"}><FaQuestion className={styles.icon} /></NavLink>
             </span>
         </nav>

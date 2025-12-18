@@ -1,0 +1,46 @@
+.mood-check {
+  padding-top: 5rem;
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 3rem 0;
+
+    li {
+      margin: 0.8rem;
+
+      button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        font-size: 0.8rem;
+        cursor: pointer;
+
+        .mood-icon {
+          width: 45px;
+          height: 45px;
+          margin-bottom: 0.3rem;
+          color: rgb(162, 162, 162);
+        }
+
+        .selected {
+          color: rgb(173, 202, 138);
+        }
+
+        &:hover {
+          .mood-icon {
+            color: lightgray;
+          }
+        }
+
+        &:disabled {
+          color: rgb(112, 112, 112);
+        }
+      }
+    }
+  }
+}

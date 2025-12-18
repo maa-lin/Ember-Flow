@@ -1,3 +1,4 @@
+import type { ChallengeStatus } from "../components/Challenge/Challenge";
 import type { DailyState } from "../models/DailyState";
 import type { Mood } from "../models/IMoodContext";
 import type { ThemeKey } from "../models/Theme";
@@ -89,16 +90,23 @@ export const getThemeFromLocalStorage = () => {
 };
 
 //Challenge
-export const saveChallengeIsCompletedToLocalStorage = (isCompleted: boolean) => {
-  localStorage.setItem("challengeCompleted", JSON.stringify(isCompleted));
+export const saveChallengeStatusToLocalStorage = (status: ChallengeStatus) => {
+  localStorage.setItem("challengeStatus", JSON.stringify(status));
 };
 
-export const getChallengeIsCompletedToLocalStorage = () => {
-  const foundValue = localStorage.getItem("challengeCompleted");
+export const getChallengeStatusFromLocalStorage = () => {
+  const foundValue = localStorage.getItem("challengeStatus");
 
-  if (foundValue === "true") {
-    return true;
-  } else {
-    return false;
-  };
+  if (!foundValue) return "active";
+
+  try {
+    const status = JSON.parse(foundValue);
+
+    if (status === "active" || status === "completed" || status === "skipped") return status;
+
+    return "active";
+
+  } catch (error) {
+    return "active";
+  }
 }

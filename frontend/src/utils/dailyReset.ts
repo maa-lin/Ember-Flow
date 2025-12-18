@@ -1,5 +1,5 @@
 import { ActionTypes, type Action } from "../reducers/DailyStateReducer";
-import { saveChallengeIsCompletedToLocalStorage, saveDailyStateToLocalStorage, saveMoodToLocalStorage } from "./localStorage";
+import { saveChallengeStatusToLocalStorage, saveDailyStateToLocalStorage, saveMoodToLocalStorage } from "./localStorage";
 import { ListItem } from "../models/List";
 import type React from "react";
 import type { Mood } from "../models/IMoodContext";
@@ -11,7 +11,7 @@ export const dailyReset = (dispatch: React.Dispatch<Action>, setMood: (mood: Moo
     
     setMood(null);
     saveMoodToLocalStorage(null);
-    saveChallengeIsCompletedToLocalStorage(false);
+    saveChallengeStatusToLocalStorage("active");
     saveDailyStateToLocalStorage({
         lists: {
             focus: [new ListItem(""), new ListItem(""), new ListItem("")],
