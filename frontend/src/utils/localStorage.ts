@@ -110,3 +110,20 @@ export const getChallengeStatusFromLocalStorage = () => {
     return "active";
   }
 }
+
+// Welcome-page
+export const saveHasSeenWelcomePageToLocalStorage = () => {
+  localStorage.setItem("hasSeenWelcome", JSON.stringify(true));
+};
+
+export const getHasSeenWelcomePageFromLocalStorage = () => {
+  const foundValue = localStorage.getItem("hasSeenWelcome");
+
+  if (foundValue) {
+    const hasSeen = JSON.parse(foundValue);
+
+    return hasSeen;
+  };
+
+  return null;
+}

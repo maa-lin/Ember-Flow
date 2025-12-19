@@ -73,7 +73,7 @@ export const Challenge = () => {
       }
 
       {status === "skipped" && <p>
-          A new one will be waiting for you tomorrow.
+          A new challenge will be waiting for you tomorrow.
         </p>
       } 
 

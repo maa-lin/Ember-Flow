@@ -1,15 +1,14 @@
-import { NavLink } from "react-router"
 import styles from "./HelpModal.module.scss"
-import { FaBookOpen, FaPagelines, FaXmark } from "react-icons/fa6"
+import { FaBookOpen, FaPagelines } from "react-icons/fa6"
 import { FaChevronDown } from "react-icons/fa"
+import { CloseButton } from "../CloseButton/CloseButton"
 
 export const HelpModal = () => {
 
     return <div className={styles.help}>
-        <NavLink to={"/"}><FaXmark className={styles.xmark} /></NavLink>
-        <div className={styles.content}>
+        <CloseButton />
         <h1>Ember Flow</h1>
-        <p className={styles.tagline}>— Tend your energy, one gentle moment at a time. </p>
+        <p className="tagline">— Tend your energy, one gentle moment at a time. </p>
 
         <p>
             Ember Flow helps you find calm in your daily rhythm by guiding you 
@@ -45,6 +44,4 @@ export const HelpModal = () => {
             <p>You can open <strong>Breathe</strong> anytime you need to pause or feel stressed.</p>
         </details>
         </div>
-        
-    </div>
 }
