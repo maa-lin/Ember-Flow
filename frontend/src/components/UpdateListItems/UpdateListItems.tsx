@@ -1,8 +1,10 @@
-import { useContext, useRef, useState } from "react"
+import { useContext, useState } from "react"
 import type { ListItem } from "../../models/List"
 import { DailyStateContext } from "../../contexts/DailyStateContext"
 import { ActionTypes, type ListTypes } from "../../reducers/DailyStateReducer"
 import { GetListAffirmation } from "../GetListAffirmation/GetListAffirmation"
+import styles from "./UpdateListItems.module.scss"
+import { Checkbox } from "../Checkbox/Checkbox"
 
 type UpdateListItemsProps = {
     listItem: ListItem,
@@ -17,8 +19,6 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [showAffirmation, setShowAffirmation] = useState<boolean>(false);
     
-    const inputRef = useRef<HTMLInputElement | null>(null); //Holds an input element from the DOM and gives direct access to it, used to shift focus on inputs.
-
     const updateListItem = (text: string) => {
         if (!isEditing) return;
 
@@ -41,70 +41,47 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
         }
     };
 
-    const startEditing = () => {
-        setIsEditing(true);
-        inputRef.current?.focus();
-    };
-
-    const stopEditing = () => {
-        setIsEditing(false);
-        inputRef.current?.blur();
-    };
-
-    const handleOnBlur = () => {
-        if (isEditing) stopEditing();
-    };
-
-    const handleInputOnClick = (e: React.MouseEvent<HTMLInputElement>) => {
-        if (isEditing || !e.currentTarget.value.trim()) {
-            startEditing();
-        }
-    };
-
     const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             setIsEditing(false);
             e.currentTarget.blur();
         }
     };
+console.log(props.listItem.isDone);
 
-    return <li onClick={toggleListItem}>
-
+    return <li className={styles["list-row"]}>
             <label>
                 <input 
                     type="checkbox"
                     checked={props.listItem.isDone}
-                    disabled={isEditing || !props.listItem.text.trim()}
+                    disabled={isEditing || !props.listItem.text.trim() || props.listItem.isDone}
                     onChange={toggleListItem}
-                    onClick={(e) => { e.stopPropagation() }}  //Stops onClick on <li> so toggle is not triggered twice.
+                    className="sr-only"
                  />
-                 Mark as done
+
+                 <Checkbox isDone={props.listItem.isDone} />
+                 
+                 <span className="sr-only">Mark as done</span>
             </label>
 
-            <label>
-                {`${props.listType} item ${props.index + 1}`}
-                <input 
-                    ref={inputRef}
-                    type="text"
-                    value={props.listItem.text} 
-                    readOnly={!isEditing}
-                    onChange={(e) => { updateListItem(e.target.value) }}
-                    onBlur={handleOnBlur}
-                    onClick={handleInputOnClick}
-                    onKeyDown={handleOnKeyDown}
-                />
-            </label>
-
-            <button
-                type="button"
-                onMouseDown={(e) => { // Use onMouseDown instead of onClick so clicking the edit button does NOT trigger input onBlur and exit edit mode before this runs.
-                    e.preventDefault(); //Prevents button from stealing focus from text-input.
-                    isEditing ? stopEditing() : startEditing(); 
-                }}
-                onClick={(e) => { e.stopPropagation() }} //Stops the onClick on <li> so that toggle is not triggered when clicking the edit-button
+            <label 
+                htmlFor={`${props.listType}${props.index + 1}`}
+                className="sr-only"
             >
-                {isEditing ? "✔️" : "✏️"}
-            </button>
+                {`${props.listType} item ${props.index + 1}`}
+            </label>
+
+            <input 
+                type="text"
+                id={`${props.listType}${props.index + 1}`}
+                value={props.listItem.text}
+                className={`${styles["input-item"]} ${ props.listItem.isDone ? styles.checked : ""}`} 
+                disabled={props.listItem.isDone}
+                onChange={(e) => { updateListItem(e.target.value) }}
+                onBlur={() => { setIsEditing(false) }}
+                onClick={() => { setIsEditing(true) }}
+                onKeyDown={handleOnKeyDown}
+            />
 
             <GetListAffirmation isOpen={showAffirmation} onClose={() => { setShowAffirmation(false) }} listType={props.listType} />
     </li>

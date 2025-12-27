@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { UpdateListItems } from "../UpdateListItems/UpdateListItems";
 import type { ListTypes } from "../../reducers/DailyStateReducer";
 import { DailyStateContext } from "../../contexts/DailyStateContext";
+import styles from "./List.module.scss";
 
 type ListProps = {
     heading: string,
@@ -12,7 +13,7 @@ export const List = (props: ListProps) => {
 
     const { dailyState } = useContext(DailyStateContext);
 
-    return <div className={`${props.listType}`}>
+    return <div className={styles.list}>
         <h2>{`${props.heading}`}</h2>
         <form onSubmit={(e) => { e.preventDefault() }}>
             <ul>
