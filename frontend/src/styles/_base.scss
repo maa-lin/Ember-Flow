@@ -1,4 +1,5 @@
-@use "./variables";
+@use "variables";
+@use "sass:color";
 
 * {
   padding: 0;
@@ -6,28 +7,35 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-  height: 100%;
+body {
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: lighten, soft-light, soft-light, normal;
+  min-height: 100dvh;
+  padding: 1rem;
+  min-width: 320px;
+  font-size: 16px;
+}
+
+// 1px stars created with mutliple boxshadows in diffrent sizes and opacities.
+body::before {
+  content: "";
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  box-shadow: variables.$stars;
 }
 
 #root {
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
-  min-height: 100%;
-}
-
-body {
-  padding: 1rem;
-  min-height: 100%;
-  min-width: 320px;
-  font-size: 16px;
+  height: 100%;
 }
 
 main {
-  padding-bottom: 8rem;
+  padding-bottom: 10rem;
 }
 
 h1,
@@ -37,6 +45,7 @@ summary {
   letter-spacing: 1px;
   font-weight: 600;
   margin: 1rem 0.8rem 0.8rem 0.8rem;
+  color: variables.$secondary-text-color;
 }
 
 h1 {
@@ -64,6 +73,16 @@ input {
 p {
   font-size: 1rem;
   margin-bottom: 1rem;
+  color: variables.$primary-text-color;
+  letter-spacing: 1px;
+}
+
+a {
+  color: variables.$primary-text-color;
+
+  &:active {
+    color: variables.$secondary-text-color;
+  }
 }
 
 // instead of 'display: none/visibility: hidden' so screen readers still can see the elements.
@@ -83,23 +102,57 @@ p {
   border-radius: 999px;
   border: none;
   padding: 0.5rem 1.5rem;
-  margin: 0.5rem;
+  margin: 0.4rem;
   width: 150px;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 400;
-  background-color: rgb(230, 230, 230);
+  box-shadow: variables.$shadow-m;
+  cursor: pointer;
 
-  &:active,
-  &:visited,
-  &:link {
-    color: black;
+  &:disabled {
+    background-color: variables.$disabled-btn-bg;
+    box-shadow: none;
+    color: variables.$disabled-btn-text;
   }
 }
 
-.btn--secondary {
-  background-color: transparent;
-  border: 1px solid darkgray;
+.btn--primary {
+  color: variables.$primary-btn-text;
+  background-color: variables.$primary-btn-bg;
+
+  &:active {
+    // background-color: darken(variables.$primary-btn-bg, 5%);
+    background-color: color.scale(variables.$primary-btn-bg, $lightness: -10%);
+  }
+}
+
+.btn--affirmation-primary {
+  background-color: variables.$primary-btn-affirmation-bg;
+  color: variables.$primary-btn-affirmation-text;
+  box-shadow: variables.$shadow-s;
+
+  &:active {
+    background-color: color.scale(
+      variables.$primary-btn-affirmation-bg,
+      $lightness: -10%
+    );
+  }
+}
+
+.btn--affirmation-secondary {
+  background-color: variables.$secondary-btn-affirmation-bg;
+  color: variables.$secondary-btn-affirmation-text;
+  border: 2px solid variables.$secondary-btn-affirmation-text;
+  box-shadow: variables.$shadow-s;
+
+  &:active {
+    background-color: color.scale(
+      variables.$secondary-btn-affirmation-bg,
+      $lightness: -10%
+    );
+    border: 2px solid darken(variables.$secondary-btn-affirmation-text, 10%);
+  }
 }
 
 .tagline {

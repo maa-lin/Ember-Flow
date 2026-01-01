@@ -1,10 +1,19 @@
+@use "../../styles/variables";
+@use "sass:color";
+
 .close {
   position: absolute;
   top: 1rem;
   right: 1rem;
 
+  &:active {
+    .xmark {
+      color: color.scale(variables.$primary-btn-text, $lightness: -10%);
+    }
+  }
+
   .xmark {
     font-size: 1.5rem;
-    color: black;
+    color: variables.$primary-btn-text;
   }
 }

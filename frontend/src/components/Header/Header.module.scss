@@ -1,31 +1,31 @@
+@use "../../styles/variables";
+
 .header {
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding-bottom: 1rem;
 
-  .help-icon {
-    background-color: rgb(176, 176, 176);
+  a {
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    border: 1px solid variables.$primary-text-color;
+    // box-shadow: variables.$shadow-s;
     width: 28px;
     height: 28px;
-    transition: background 0.2s ease;
+    color: variables.$primary-text-color;
 
-    &:hover {
-      background-color: rgb(194, 194, 194);
+    .icon {
+      font-size: 1.1rem;
     }
 
-    a {
-      display: flex;
-      justify-content: center;
-      color: rgb(255, 255, 255);
-
-      .icon {
-        font-size: 1.1rem;
-      }
+    &:active {
+      color: darken(variables.$primary-text-color, 10%);
+      border: 1px solid darken(variables.$primary-text-color, 10%);
+      background-color: rgba(variables.$sky-lavender, 0.8);
     }
   }
 }

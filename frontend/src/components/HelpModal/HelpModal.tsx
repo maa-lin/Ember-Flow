@@ -2,8 +2,17 @@ import styles from "./HelpModal.module.scss"
 import { FaBookOpen, FaPagelines } from "react-icons/fa6"
 import { FaChevronDown } from "react-icons/fa"
 import { CloseButton } from "../CloseButton/CloseButton"
+import { useContext } from "react"
+import { MoodContext } from "../../contexts/MoodContext"
+import { Navigate } from "react-router"
 
 export const HelpModal = () => {
+
+    const moodContext = useContext(MoodContext);
+
+    if (!moodContext) {
+        return <Navigate to={"/mood"} replace />
+    }
 
     return <div className={styles.help}>
         <CloseButton />
@@ -16,7 +25,7 @@ export const HelpModal = () => {
             energy and the moments that help you restore it.
         </p>
         <p>
-            Let Ember Flow be your calm companion, encouraging gentle progress 
+            Let <strong>Ember Flow</strong> be your calm companion, encouraging gentle progress 
             and mindful moments, so you can flow through your day with ease and presence.
         </p>
 
@@ -40,7 +49,7 @@ export const HelpModal = () => {
             <p><strong>Things to focus on</strong> can be a task you want to complete, or simply an intention you want to carry with you through the day. <strong>Self-care</strong> are small acts to take care of yourself — whatever feels right for you.</p>
             <p>Your day resets at <strong>3:00 AM</strong>, giving you a fresh start every morning.</p>
             <p>The <strong>daily challenge</strong> is optional. Try it if you feel like it, or skip it — a new one will be waiting for you tomorrow.</p>
-            <p>Tap a focus or self-care item to <strong>edit</strong>, and tap the glowing <strong>ember</strong> next to it to mark it as done.</p>
+            <p>Tap a focus or self-care item to <strong>edit</strong>, and tap the <strong>checkbox</strong> next to it to mark it as done.</p>
             <p>You can open <strong>Breathe</strong> anytime you need to pause or feel stressed.</p>
         </details>
         </div>

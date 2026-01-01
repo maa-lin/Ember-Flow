@@ -1,5 +1,5 @@
 export type Theme = {
-    bgColor: string
+    bg: string
 };
 
 type Themes = {
@@ -9,10 +9,10 @@ type Themes = {
 
 export const themes: Themes = {
     sunrise: {
-        bgColor: "lightgrey"
+        bg: "theme-sunrise"
     },
     sunset: {
-        bgColor: "black"
+        bg: "linear-gradient(180deg, #806956ff 0%, #624b3dff 35%, #543f2aff 65%, #38302aff 100%)"
     }
 };
 

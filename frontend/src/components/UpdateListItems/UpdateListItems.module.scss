@@ -1,30 +1,45 @@
+@use "../../styles/variables";
+
 .list-row {
   display: flex;
   align-items: center;
   justify-content: left;
-  gap: 0.5rem;
-  margin: 0.6rem;
-  padding: 0.6rem;
+  gap: 0.2rem;
+  margin: 0.3rem 0;
+  padding: 0.5rem;
   border-radius: 5px;
+  background-color: rgba(variables.$sky-lavender, 0.3);
 
   .input-item {
     padding: 0.1rem 0.3rem;
     width: 100%;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 1px solid grey;
-    background-color: transparent;
+    border: none;
+    // border-top: none;
+    // border-right: none;
+    // border-left: none;
+    // border-bottom: 1px solid variables.$cloud;
+    background-color: rgba(0, 0, 0, 0.01);
+    color: variables.$primary-text-color;
 
     &:focus-visible {
       border: none;
       border-radius: 3px;
-      outline: 2px solid gold;
-      box-shadow: 0 0 5px gold;
+      outline: 1px solid variables.$cloud;
+      box-shadow: 0 0 5px variables.$cloud;
+    }
+
+    // Removing input background color from chrome autocomplete: https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: variables.$primary-text-color !important;
     }
   }
 
   .checked {
     text-decoration: line-through;
+    color: variables.$sky-mauve;
   }
 }

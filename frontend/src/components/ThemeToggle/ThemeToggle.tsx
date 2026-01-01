@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { themes } from "../../models/Theme";
 import { saveThemeToLocalStorage } from "../../utils/localStorage";
 import styles from "./ThemeToggle.module.scss";
 import { FaMoon } from "react-icons/fa";
@@ -9,7 +8,6 @@ import { FaSun } from "react-icons/fa6";
 export const ThemeToggle = () => {
 
     const { theme, setTheme } = useContext(ThemeContext);
-    const currentTheme = themes[theme];
 
     const handleOnChange = () => {
         setTheme(theme === "sunrise" ? "sunset" : "sunrise");

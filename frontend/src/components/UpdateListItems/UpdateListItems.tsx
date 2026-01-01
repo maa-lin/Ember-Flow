@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import type { ListItem } from "../../models/List"
 import { DailyStateContext } from "../../contexts/DailyStateContext"
 import { ActionTypes, type ListTypes } from "../../reducers/DailyStateReducer"
@@ -19,6 +19,14 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [showAffirmation, setShowAffirmation] = useState<boolean>(false);
     
+    useEffect(() => {
+        if (showAffirmation) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+    }, [showAffirmation] );
+
     const updateListItem = (text: string) => {
         if (!isEditing) return;
 

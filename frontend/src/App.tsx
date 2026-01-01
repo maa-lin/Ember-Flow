@@ -9,7 +9,7 @@ import { MoodContext } from "./contexts/MoodContext";
 import type { Mood } from "./models/IMoodContext";
 import { DailyStateContext } from "./contexts/DailyStateContext";
 import { ThemeContext } from "./contexts/ThemeContext";
-import type { ThemeKey } from "./models/Theme";
+import { themes, type ThemeKey } from "./models/Theme";
 import { dailyReset } from "./utils/dailyReset";
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
   console.log(mood);
 
   const [theme, setTheme] = useState<ThemeKey>(getThemeFromLocalStorage() || "sunrise");
+  const currentTheme = themes[theme];
 
   const [dailyState, dispatch] = useReducer(DailyStateReducer, getDailyStateFromLocalStorage() || {
         lists: { 
@@ -25,7 +26,11 @@ function App() {
             selfCare: [ new ListItem(""), new ListItem("") ] 
         },
         challenge: null
-});
+  });
+
+  useEffect(() => {
+    document.body.className = currentTheme.bg;
+  }, [theme] );
 
   useEffect(() => {
     if (checkIfNewDay()) return;

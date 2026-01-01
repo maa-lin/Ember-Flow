@@ -18,6 +18,6 @@ export const WelcomeModal = () => {
             This isn't a to-do list.<br />
             It's a place to focus on just a few things — and care for yourself along the way.
          </p>
-        <button className="btn" onClick={ handleOnClick }>Continue</button>
+        <button className="btn btn--primary" onClick={ handleOnClick }>Continue</button>
     </div>
 }

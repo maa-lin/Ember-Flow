@@ -8,9 +8,7 @@ export const Header = () => {
     return <header className={styles.header}>
         <ThemeToggle />
         <nav>
-            <span className={styles["help-icon"]}>
-                <NavLink to={"/help"}><FaQuestion className={styles.icon} /></NavLink>
-            </span>
+            <NavLink to={"/help"} className={styles["help-icon"]}><FaQuestion className={styles.icon} /></NavLink>
         </nav>
     </header>
 };

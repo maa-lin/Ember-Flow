@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import styles from "./AffirmationModal.module.scss";
 import { MdAutoAwesome } from "react-icons/md";
+import { createPortal } from "react-dom";
 
 type AffirmationModalProps = {
   onClose: () => void;
@@ -10,13 +11,14 @@ type AffirmationModalProps = {
 export const AffirmationModal = (props: AffirmationModalProps) => {
   const navigate = useNavigate();
 
-  // e.stopPropagation to stop toggle on <li>
-  return (
+  const portalRoot = document.getElementById("affirmation-root");
+
+  if (!portalRoot) return null;
+  
+  // CreatePortal for opening the affirmation-modal outside the app root, so it is always above everything else.
+  return createPortal(
     <div
       className={styles["affirmation-modal"]}
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
     >
       <MdAutoAwesome className={styles.icon} />
       <p className={styles.affirmation}>{props.affirmation}</p>
@@ -24,11 +26,11 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
         Do you want to pause for a moment to breathe before continuing with your
         day?
       </p>
-      <button className="btn" onClick={() => navigate("/breathe")}>
+      <button className="btn btn--affirmation-primary" onClick={() => navigate("/breathe")}>
         Breathe
       </button>
       <button
-        className="btn btn--secondary"
+        className="btn btn--affirmation-secondary"
         onClick={() => {
           props.onClose();
           navigate("/");
@@ -36,6 +38,7 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
       >
         Skip for now
       </button>
-    </div>
+    </div>,
+    portalRoot
   );
 };

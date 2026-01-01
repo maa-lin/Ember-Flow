@@ -56,7 +56,7 @@ export const MoodCheck = () => {
       </ul>
 
       <button
-        className="btn"
+        className="btn btn--primary"
         disabled={!moodContext.mood}
         onClick={() => navigate("/", { replace: true })}
       >

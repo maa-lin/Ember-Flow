@@ -10,7 +10,7 @@ export const BreatheModal = () => {
     const moodContext = useContext(MoodContext);
 
     if (!moodContext) {
-        <Navigate to={"/mood"} replace />
+        return <Navigate to={"/mood"} replace />
     }
 
     return <div className={styles["breathe-modal"]}>

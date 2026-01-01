@@ -1,3 +1,5 @@
+@use "../../styles/variables";
+
 .breathe-container {
   display: flex;
   flex: 1;
@@ -16,14 +18,14 @@
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    background-color: rgb(115, 77, 55, 0.3);
+    background-color: rgb(variables.$calm-blue, 0.3);
   }
 
   .core {
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    background-color: rgb(115, 77, 55);
+    background-color: variables.$calm-blue;
     z-index: 10;
   }
 }

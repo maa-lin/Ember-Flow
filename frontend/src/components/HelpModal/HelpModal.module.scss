@@ -1,14 +1,25 @@
+@use "../../styles/variables";
+@use "sass:color";
+
 .help {
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  padding: 2rem 1rem;
-  min-height: 100dvh;
+  padding: 3rem 2rem;
+  min-height: 100%;
   width: 100%;
   text-align: left;
+  background-color: variables.$sky-lavender;
 
   h1 {
     margin-bottom: 0.5rem;
     text-align: center;
+  }
+
+  strong {
+    font-weight: 500;
   }
 
   details {
@@ -16,12 +27,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       list-style: none;
       margin: 0 0 0.5rem 0;
       cursor: pointer;
-      padding: 0.5rem 0.8rem;
-      background-color: rgb(234, 234, 234);
+      padding: 0.5rem 0.5rem;
+      background-color: rgba(variables.$cloud, 0.1);
+      box-shadow: variables.$shadow-s;
       border-radius: 5px;
 
       span {
@@ -31,11 +43,19 @@
 
       svg {
         font-size: 1rem;
-        margin-right: 0.3rem;
+        margin-right: 0.5rem;
       }
 
       .chevron {
         transition: transform 0.2s ease;
+        margin: 0;
+      }
+
+      &:active {
+        background-color: color.scale(
+          rgba(variables.$cloud, 0.1),
+          $lightness: -10%
+        );
       }
     }
 

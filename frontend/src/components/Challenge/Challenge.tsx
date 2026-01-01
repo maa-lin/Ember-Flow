@@ -21,6 +21,14 @@ export const Challenge = () => {
   const [status, setStatus] = useState<ChallengeStatus>(getChallengeStatusFromLocalStorage());
 
   useEffect(() => {
+        if (showAffirmation) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+    }, [showAffirmation] );
+    
+  useEffect(() => {
     const getData = async () => {
       if (!moodContext.mood) return;
       if (dailyState.challenge) return;
@@ -68,7 +76,8 @@ export const Challenge = () => {
       }
 
       {status === "completed" && <p>
-          You completed today’s challenge. Come back tomorrow for a new one.
+          You completed today’s challenge. A new one will be waiting for you tomorrow.
+
         </p>
       }
 
