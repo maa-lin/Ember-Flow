@@ -7,6 +7,8 @@ import styles from "./Challenge.module.scss";
 import { AffirmationModal } from "../AffirmationModal/AffirmationModal";
 import { getChallengeStatusFromLocalStorage, saveChallengeStatusToLocalStorage } from "../../utils/localStorage";
 import { MdAutoAwesome } from "react-icons/md";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { themes } from "../../models/Theme";
 
 export type ChallengeStatus = "active" | "completed" | "skipped";
 
@@ -15,6 +17,10 @@ export const Challenge = () => {
   const { dispatch, dailyState } = useContext(DailyStateContext);
 
   if (!moodContext) return null;
+
+  const { theme } = useContext(ThemeContext);
+  const currentTheme = themes[theme];
+  
 
   const [loading, setLoading] = useState<boolean>(false);
   const [showAffirmation, setShowAffirmation] = useState<boolean>(false);
@@ -62,15 +68,15 @@ export const Challenge = () => {
   };
 
   return (
-    <div className={styles.challenge}>
+    <div style={{ "--bg-color": currentTheme.itemBg } as React.CSSProperties} className={styles.challenge}>
       
       <h2><MdAutoAwesome />Daily Challenge</h2>
       {status === "active" && 
         <>
           <p>{loading ? "Loading..." : dailyState?.challenge?.text}</p>
           <div className={styles["btn-container"]}>
-            <button onClick={() => handleCompleteOnClick("completed")}>I did this!</button>
-            <button onClick={() => handleCompleteOnClick("skipped")}>Skip</button>
+            <button style={{ "--link-color": currentTheme.linkColor } as React.CSSProperties} onClick={() => handleCompleteOnClick("completed")}>I did this!</button>
+            <button style={{ "--link-color": currentTheme.linkColor } as React.CSSProperties} onClick={() => handleCompleteOnClick("skipped")}>Skip</button>
           </div>
         </>
       }

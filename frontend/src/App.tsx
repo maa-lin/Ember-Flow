@@ -29,7 +29,7 @@ function App() {
   });
 
   useEffect(() => {
-    document.body.className = currentTheme.bg;
+    document.body.className = currentTheme.theme;
   }, [theme] );
 
   useEffect(() => {

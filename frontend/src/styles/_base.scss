@@ -1,6 +1,28 @@
 @use "variables";
 @use "sass:color";
 
+:root {
+  --primary-text-sunrise: #{variables.$primary-text-sunrise};
+  --secondary-text-sunrise: #{variables.$secondary-text-sunrise};
+  --disabled-text-sunrise: #{variables.$sky-mauve};
+
+  --primary-text-sunset: #{variables.$primary-text-sunset};
+  --secondary-text-sunset: #{variables.$secondary-text-sunset};
+  --disabled-text-sunset: #{variables.$sky-espresso};
+
+  --modal-bg-sunrise: #{variables.$sky-lavender};
+  --modal-bg-sunset: #{variables.$modal-walnut};
+
+  --item-bg-sunrise: #{variables.$sky-lavender};
+  --item-bg-sunset: #{variables.$item-bg};
+
+  --link-sunrise: #{variables.$star};
+  --link-sunset: #{variables.$secondary-text-sunrise};
+
+  --shadow-s-sunrise: #{variables.$shadow-s};
+  --shadow-s-sunset: #{variables.$shadow-darker-s};
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -11,7 +33,6 @@ body {
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  background-blend-mode: lighten, soft-light, soft-light, normal;
   min-height: 100dvh;
   padding: 1rem;
   min-width: 320px;
@@ -45,7 +66,6 @@ summary {
   letter-spacing: 1px;
   font-weight: 600;
   margin: 1rem 0.8rem 0.8rem 0.8rem;
-  color: variables.$secondary-text-color;
 }
 
 h1 {
@@ -73,16 +93,7 @@ input {
 p {
   font-size: 1rem;
   margin-bottom: 1rem;
-  color: variables.$primary-text-color;
   letter-spacing: 1px;
-}
-
-a {
-  color: variables.$primary-text-color;
-
-  &:active {
-    color: variables.$secondary-text-color;
-  }
 }
 
 // instead of 'display: none/visibility: hidden' so screen readers still can see the elements.
@@ -107,51 +118,10 @@ a {
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 400;
-  box-shadow: variables.$shadow-m;
   cursor: pointer;
 
   &:disabled {
-    background-color: variables.$disabled-btn-bg;
     box-shadow: none;
-    color: variables.$disabled-btn-text;
-  }
-}
-
-.btn--primary {
-  color: variables.$primary-btn-text;
-  background-color: variables.$primary-btn-bg;
-
-  &:active {
-    // background-color: darken(variables.$primary-btn-bg, 5%);
-    background-color: color.scale(variables.$primary-btn-bg, $lightness: -10%);
-  }
-}
-
-.btn--affirmation-primary {
-  background-color: variables.$primary-btn-affirmation-bg;
-  color: variables.$primary-btn-affirmation-text;
-  box-shadow: variables.$shadow-s;
-
-  &:active {
-    background-color: color.scale(
-      variables.$primary-btn-affirmation-bg,
-      $lightness: -10%
-    );
-  }
-}
-
-.btn--affirmation-secondary {
-  background-color: variables.$secondary-btn-affirmation-bg;
-  color: variables.$secondary-btn-affirmation-text;
-  border: 2px solid variables.$secondary-btn-affirmation-text;
-  box-shadow: variables.$shadow-s;
-
-  &:active {
-    background-color: color.scale(
-      variables.$secondary-btn-affirmation-bg,
-      $lightness: -10%
-    );
-    border: 2px solid darken(variables.$secondary-btn-affirmation-text, 10%);
   }
 }
 

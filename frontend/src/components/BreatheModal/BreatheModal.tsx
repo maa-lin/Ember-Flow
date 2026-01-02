@@ -4,6 +4,8 @@ import { CloseButton } from "../CloseButton/CloseButton"
 import styles from "./BreatheModal.module.scss"
 import { MoodContext } from "../../contexts/MoodContext"
 import { Navigate } from "react-router"
+import { ThemeContext } from "../../contexts/ThemeContext"
+import { themes } from "../../models/Theme"
 
 export const BreatheModal = () => {
 
@@ -13,7 +15,10 @@ export const BreatheModal = () => {
         return <Navigate to={"/mood"} replace />
     }
 
-    return <div className={styles["breathe-modal"]}>
+    const { theme } = useContext(ThemeContext);
+    const currentTheme = themes[theme];
+
+    return <div className={styles["breathe-modal"]} style={{ backgroundColor: currentTheme.modalBgColor }}>
         <CloseButton />
         <h1 className="sr-only">Breathe</h1>
         <p>Breathe in as the circle grows,<br/>

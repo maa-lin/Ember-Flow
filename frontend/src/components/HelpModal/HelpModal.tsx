@@ -5,6 +5,8 @@ import { CloseButton } from "../CloseButton/CloseButton"
 import { useContext } from "react"
 import { MoodContext } from "../../contexts/MoodContext"
 import { Navigate } from "react-router"
+import { ThemeContext } from "../../contexts/ThemeContext"
+import { themes } from "../../models/Theme"
 
 export const HelpModal = () => {
 
@@ -14,7 +16,10 @@ export const HelpModal = () => {
         return <Navigate to={"/mood"} replace />
     }
 
-    return <div className={styles.help}>
+    const { theme } = useContext(ThemeContext);
+    const currentTheme = themes[theme];
+
+    return <div className={styles.help} style={{ backgroundColor: currentTheme.modalBgColor }}>
         <CloseButton />
         <h1>Ember Flow</h1>
         <p className="tagline">— Tend your energy, one gentle moment at a time. </p>
@@ -30,7 +35,7 @@ export const HelpModal = () => {
         </p>
 
         <details>
-            <summary><span><FaPagelines /> What is mindfullness?</span><FaChevronDown className={styles.chevron} /></summary>
+            <summary style={{ boxShadow: currentTheme.shadowS }}><span><FaPagelines /> What is mindfullness?</span><FaChevronDown className={styles.chevron} /></summary>
             <p>
                 Mindfulness is the practice of paying attention to the <strong>present moment</strong> — your thoughts, 
                 feelings, and surroundings without judgment. 
@@ -44,7 +49,7 @@ export const HelpModal = () => {
         </details>
 
         <details>
-            <summary><span><FaBookOpen /> How to use Ember Flow</span><FaChevronDown className={styles.chevron} /></summary>
+            <summary style={{ boxShadow: currentTheme.shadowS }}><span><FaBookOpen /> How to use Ember Flow</span><FaChevronDown className={styles.chevron} /></summary>
             <p>Each day, you’ll see two short lists; <strong>things to focus on</strong> and <strong>self-care.</strong></p>
             <p><strong>Things to focus on</strong> can be a task you want to complete, or simply an intention you want to carry with you through the day. <strong>Self-care</strong> are small acts to take care of yourself — whatever feels right for you.</p>
             <p>Your day resets at <strong>3:00 AM</strong>, giving you a fresh start every morning.</p>

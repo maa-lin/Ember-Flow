@@ -12,7 +12,6 @@
     border-radius: 999px;
     background-color: rgba(variables.$sky-lavender, 0.3);
     transition: background 0.2 ease;
-    // box-shadow: inset variables.$shadow-s;
 
     .knob {
       position: absolute;
@@ -28,7 +27,6 @@
       background-color: variables.$sky-lavender;
       border-radius: 50%;
       padding-right: 1px;
-      // box-shadow: variables.$shadow-s;
 
       svg {
         display: block;
@@ -39,14 +37,14 @@
   }
 
   input:checked + .track {
-    background-color: #d7d7d7;
+    background-color: rgba(variables.$item-bg, 0.4);
 
     .knob {
       transform: translateX(24px);
-      background-color: black;
+      background-color: variables.$sky-espresso;
 
       svg {
-        color: white;
+        color: variables.$primary-text-sunset;
       }
     }
   }

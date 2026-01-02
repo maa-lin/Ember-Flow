@@ -24,7 +24,7 @@
     align-items: center;
     border: none;
     background-color: transparent;
-    color: variables.$primary-text-color;
+    color: var(--breathe-btn);
     font-size: 0.8rem;
     cursor: pointer;
 
@@ -33,8 +33,8 @@
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
-      background-color: rgba(variables.$primary-text-color, 0.3);
-      color: variables.$primary-text-color;
+      background-color: color-mix(in srgb, var(--breathe-btn) 30%, transparent);
+      color: var(--breathe-btn);
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -51,7 +51,12 @@
 
     &:active {
       .tool-icon {
-        color: color.scale(variables.$primary-text-color, $lightness: -10%);
+        color: color-mix(in srgb, var(--breathe-btn) 90%, black 10%);
+        background-color: color-mix(
+          in srgb,
+          color-mix(in srgb, var(--breathe-btn) 30%, transparent),
+          black 10%
+        );
       }
     }
   }

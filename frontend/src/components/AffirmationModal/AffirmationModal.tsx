@@ -2,6 +2,9 @@ import { useNavigate } from "react-router";
 import styles from "./AffirmationModal.module.scss";
 import { MdAutoAwesome } from "react-icons/md";
 import { createPortal } from "react-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { themes } from "../../models/Theme";
 
 type AffirmationModalProps = {
   onClose: () => void;
@@ -10,6 +13,8 @@ type AffirmationModalProps = {
 
 export const AffirmationModal = (props: AffirmationModalProps) => {
   const navigate = useNavigate();
+  const { theme } = useContext(ThemeContext);
+  const currentTheme = themes[theme];
 
   const portalRoot = document.getElementById("affirmation-root");
 
@@ -19,6 +24,7 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
   return createPortal(
     <div
       className={styles["affirmation-modal"]}
+      style={{ backgroundColor: currentTheme.modalBgColor }}
     >
       <MdAutoAwesome className={styles.icon} />
       <p className={styles.affirmation}>{props.affirmation}</p>

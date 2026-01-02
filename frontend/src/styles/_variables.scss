@@ -1,10 +1,10 @@
-//Background colors for "sunrise" theme
-$sky-lavender: #735061;
-$sky-rose: #b26e83;
-$sky-mauve: #7d4853;
-
 $cloud: #f0af4f;
 $star: rgba(255, 196, 166, 0.8);
+
+//Background colors for "sunrise" theme
+$sky-lavender: #735061; // sky-lavander is also used for modal background
+$sky-rose: #b26e83;
+$sky-mauve: #7d4853;
 
 $sunrise-background: radial-gradient(
     70% 25% at 20% 5%,
@@ -14,6 +14,29 @@ $sunrise-background: radial-gradient(
   radial-gradient(70% 40% at 90% 40%, $cloud, transparent 75%),
   radial-gradient(90% 50% at 10% 70%, $cloud, transparent 80%),
   linear-gradient(180deg, $sky-lavender 0%, $sky-rose 35%, $sky-mauve 100%);
+
+// Background color for "sunset" theme
+$sky-mahogany: #311815;
+$sky-hazel: #2c1714;
+$sky-espresso: #23120f;
+
+// Modal and task item background "sunset" theme
+$modal-walnut: #412721;
+$item-bg: #6d4b27;
+
+$sunset-background: linear-gradient(
+    130deg,
+    rgba($cloud, 0) 30%,
+    rgba($cloud, 0.5) 45%,
+    rgba($cloud, 0) 70%
+  ),
+  linear-gradient(
+    130deg,
+    rgba(255, 215, 100, 0) 55%,
+    rgba(255, 215, 100, 0.3) 58%,
+    rgba(255, 215, 100, 0) 90%
+  ),
+  linear-gradient(180deg, $sky-mahogany 0%, $sky-hazel 25%, $sky-espresso 100%);
 
 //Box-shadow stars
 $stars: 2vw 5vh 2px rgba($star, 0.8), 74vw 8vh 1px rgba($star, 0.6),
@@ -45,31 +68,48 @@ $stars: 2vw 5vh 2px rgba($star, 0.8), 74vw 8vh 1px rgba($star, 0.6),
   98vw 132vh 1px rgba($star, 0.8);
 
 //Text colors, also used on icon-buttons
-$primary-text-color: #eed8c1;
-$secondary-text-color: #f4c58f;
+$primary-text-sunrise: #eed8c1;
+$secondary-text-sunrise: #f4c58f;
+
+$primary-text-sunset: #fcd4aa;
+$secondary-text-sunset: #e68f43;
 
 //Button colors and shadows
 $primary-btn-bg: $sky-mauve;
-$primary-btn-text: $primary-text-color;
+$primary-btn-text: $primary-text-sunrise;
 
-$primary-btn-affirmation-bg: $primary-text-color;
+$primary-btn-bg-sunset: $secondary-text-sunset;
+$primary-btn-text-sunset: $sky-mahogany;
+
+$primary-btn-affirmation-bg: $primary-text-sunrise;
 $primary-btn-affirmation-text: $sky-mauve;
 
+$primary-btn-affirmation-bg-sunset: $primary-text-sunset;
+$primary-btn-affirmation-text-sunset: $modal-walnut;
+
 $secondary-btn-affirmation-bg: transparent;
-$secondary-btn-affirmation-text: $primary-text-color;
+$secondary-btn-affirmation-text: $primary-text-sunrise;
+$secondary-btn-affirmation-text-sunset: $primary-text-sunset;
 
 $disabled-btn-text: $sky-mauve;
-$disabled-btn-bg: rgba($primary-text-color, 0.2);
+$disabled-btn-bg: rgba($primary-text-sunrise, 0.2);
+
+$disabled-btn-text-sunset: #3e2e23;
+$disabled-btn-bg-sunset: rgba($secondary-text-sunset, 0.4);
 
 $shadow-color: #4a3745;
+$shadow-darker: #1a1311;
 $shadow-s: 2px 2px 3px rgba($shadow-color, 0.4);
 $shadow-m: 3px 3px 6px $shadow-color;
+$shadow-darker-s: 2px 2px 3px rgba($shadow-darker, 0.4);
+$shadow-darker-m: 2px 2px 3px $shadow-darker;
 
 // Active on buttons
 $active: -10%;
+$opacity: 0.5;
 
 //Breathe-animation color
-$calm-blue: rgb(139, 124, 251);
+$calm-blue: #8b7cfb;
 
 //icons
 $icon-gold: $cloud;

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { MoodContext } from "../../contexts/MoodContext";
 import type { Mood } from "../../models/IMoodContext";
 import { saveMoodToLocalStorage } from "../../utils/localStorage";
@@ -10,9 +10,14 @@ import {
   FaFaceTired,
 } from "react-icons/fa6";
 import { useNavigate } from "react-router";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { themes } from "../../models/Theme";
 
 export const MoodCheck = () => {
   const moodContext = useContext(MoodContext);
+  const { theme } = useContext(ThemeContext);
+  const currentTheme = themes[theme];
+
   const navigate = useNavigate();
 
   if (!moodContext) return null;
@@ -30,26 +35,66 @@ export const MoodCheck = () => {
       <p>Take a moment to check in with yourself.</p>
       <ul>
         <li>
-          <button onClick={() => handleClick("happy")}>
-            <FaFaceLaughBeam className={`${styles["mood-icon"]} ${moodContext.mood === "happy" ? styles.selected : ""}`} />
+          <button
+            style={{ color: currentTheme.primaryTextColor }}
+            onClick={() => handleClick("happy")}
+          >
+            <FaFaceLaughBeam
+              style={{
+                "--mood-icon-color": currentTheme.secondaryTextColor,
+                opacity:
+                  moodContext.mood === "happy" ? 1 : currentTheme.opacity,
+              } as React.CSSProperties}
+              className={`${styles["mood-icon"]}`}
+            />
             Happy
           </button>
         </li>
         <li>
-          <button onClick={() => handleClick("calm")}>
-            <FaFaceSmile className={`${styles["mood-icon"]} ${moodContext.mood === "calm" ? styles.selected : ""}`} />
+          <button
+            style={{ color: currentTheme.primaryTextColor }}
+            onClick={() => handleClick("calm")}
+          >
+            <FaFaceSmile
+               style={{
+                "--mood-icon-color": currentTheme.secondaryTextColor,
+                opacity:
+                  moodContext.mood === "calm" ? 1 : currentTheme.opacity,
+              } as React.CSSProperties}
+              className={`${styles["mood-icon"]}`}
+            />
             Calm
           </button>
         </li>
         <li>
-          <button onClick={() => handleClick("neutral")}>
-            <FaFaceMeh className={`${styles["mood-icon"]} ${moodContext.mood === "neutral" ? styles.selected : ""}`} />
+          <button
+            style={{ color: currentTheme.primaryTextColor }}
+            onClick={() => handleClick("neutral")}
+          >
+            <FaFaceMeh
+               style={{
+                "--mood-icon-color": currentTheme.secondaryTextColor,
+                opacity:
+                  moodContext.mood === "neutral" ? 1 : currentTheme.opacity,
+              } as React.CSSProperties}
+              className={`${styles["mood-icon"]}`}
+            />
             Neutral
           </button>
         </li>
         <li>
-          <button onClick={() => handleClick("stressed")}>
-            <FaFaceTired className={`${styles["mood-icon"]} ${moodContext.mood === "stressed" ? styles.selected : ""}`} />
+          <button
+            style={{ color: currentTheme.primaryTextColor }}
+            onClick={() => handleClick("stressed")}
+          >
+            <FaFaceTired
+               style={{
+                "--mood-icon-color": currentTheme.secondaryTextColor,
+                opacity:
+                  moodContext.mood === "stressed" ? 1 : currentTheme.opacity,
+              } as React.CSSProperties}
+              className={`${styles["mood-icon"]}`}
+            />
             Stressed
           </button>
         </li>

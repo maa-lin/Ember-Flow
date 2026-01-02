@@ -1,5 +1,147 @@
 @use "variables";
+@use "sass:color";
 
 .theme-sunrise {
+  background-blend-mode: lighten, soft-light, soft-light, normal;
   background: variables.$sunrise-background;
+
+  h1,
+  h2,
+  summary {
+    color: variables.$secondary-text-sunrise;
+  }
+
+  p {
+    color: variables.$primary-text-sunrise;
+  }
+
+  a {
+    color: variables.$primary-text-sunrise;
+
+    &:active {
+      color: variables.$secondary-text-sunrise;
+    }
+  }
+
+  .btn {
+    box-shadow: variables.$shadow-m;
+
+    &:disabled {
+      background-color: variables.$disabled-btn-bg;
+      color: variables.$disabled-btn-text;
+    }
+  }
+
+  .btn--primary {
+    color: variables.$primary-btn-text;
+    background-color: variables.$primary-btn-bg;
+
+    &:active {
+      background-color: color.scale(
+        variables.$primary-btn-bg,
+        $lightness: -10%
+      );
+    }
+  }
+
+  .btn--affirmation-primary {
+    background-color: variables.$primary-btn-affirmation-bg;
+    color: variables.$primary-btn-affirmation-text;
+    box-shadow: variables.$shadow-s;
+
+    &:active {
+      background-color: color.scale(
+        variables.$primary-btn-affirmation-bg,
+        $lightness: -10%
+      );
+    }
+  }
+
+  .btn--affirmation-secondary {
+    background-color: variables.$secondary-btn-affirmation-bg;
+    color: variables.$secondary-btn-affirmation-text;
+    border: 2px solid variables.$secondary-btn-affirmation-text;
+    box-shadow: variables.$shadow-s;
+
+    &:active {
+      background-color: color.scale(
+        variables.$secondary-btn-affirmation-bg,
+        $lightness: -10%
+      );
+      border: 2px solid darken(variables.$secondary-btn-affirmation-text, 10%);
+    }
+  }
+}
+
+.theme-sunset {
+  background-blend-mode: soft-light, overlay, normal;
+  background: variables.$sunset-background;
+
+  h1,
+  h2,
+  summary {
+    color: variables.$secondary-text-sunset;
+  }
+
+  p {
+    color: variables.$primary-text-sunset;
+  }
+
+  a {
+    color: variables.$primary-text-sunset;
+
+    &:active {
+      color: variables.$secondary-text-sunset;
+    }
+  }
+
+  .btn {
+    box-shadow: variables.$shadow-darker-s;
+
+    &:disabled {
+      background-color: variables.$disabled-btn-bg-sunset;
+      color: variables.$disabled-btn-text-sunset;
+    }
+  }
+
+  .btn--primary {
+    color: variables.$primary-btn-text-sunset;
+    background-color: variables.$primary-btn-bg-sunset;
+
+    &:active {
+      background-color: color.scale(
+        variables.$primary-btn-bg-sunset,
+        $lightness: -10%
+      );
+    }
+  }
+
+  .btn--affirmation-primary {
+    background-color: variables.$primary-btn-affirmation-bg-sunset;
+    color: variables.$primary-btn-affirmation-text-sunset;
+    box-shadow: variables.$shadow-darker-s;
+
+    &:active {
+      background-color: color.scale(
+        variables.$primary-btn-affirmation-bg-sunset,
+        $lightness: -10%
+      );
+    }
+  }
+
+  .btn--affirmation-secondary {
+    background-color: variables.$secondary-btn-affirmation-bg;
+    color: variables.$secondary-btn-affirmation-text-sunset;
+    border: 2px solid variables.$secondary-btn-affirmation-text-sunset;
+    box-shadow: variables.$shadow-s;
+
+    &:active {
+      background-color: color.scale(
+        variables.$secondary-btn-affirmation-bg,
+        $lightness: -10%
+      );
+      border: 2px solid
+        darken(variables.$secondary-btn-affirmation-text-sunset, 10%);
+    }
+  }
 }

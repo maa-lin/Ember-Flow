@@ -1,5 +1,14 @@
 export type Theme = {
-    bg: string
+    theme: string,
+    primaryTextColor: string,
+    secondaryTextColor: string,
+    modalBgColor: string,
+    itemBg: string,
+    opacity: string,
+    shadowS: string,
+    helpIconBg: string,
+    linkColor: string,
+    disabledText: string
 };
 
 type Themes = {
@@ -9,10 +18,28 @@ type Themes = {
 
 export const themes: Themes = {
     sunrise: {
-        bg: "theme-sunrise"
+        theme: "theme-sunrise",
+        primaryTextColor: "#eed8c1",
+        secondaryTextColor: "#f4c58f",
+        modalBgColor: "var(--modal-bg-sunrise)",
+        itemBg: "var(--item-bg-sunrise)",
+        opacity: "0.5",
+        shadowS: "var(--shadow-s-sunrise)",
+        helpIconBg: "var(--modal-bg-sunrise)",
+        linkColor: "var(--link-sunrise)",
+        disabledText: "var(--disabled-text-sunrise)",
     },
     sunset: {
-        bg: "linear-gradient(180deg, #806956ff 0%, #624b3dff 35%, #543f2aff 65%, #38302aff 100%)"
+        theme: "theme-sunset",
+        primaryTextColor: "var(--primary-text-sunset)",
+        secondaryTextColor: "var(--secondary-text-sunset)",
+        modalBgColor: "var(--modal-bg-sunset)",
+        itemBg: "var(--item-bg-sunset)",
+        opacity: "0.5",
+        shadowS: "var(--shadow-s-sunset)",
+        helpIconBg: "var(--modal-bg-sunset)",
+        linkColor: "var(--link-sunset)",
+        disabledText: "var(--disabled-text-sunset)",
     }
 };
 

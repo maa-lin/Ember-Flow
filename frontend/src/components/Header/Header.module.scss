@@ -12,20 +12,19 @@
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    border: 1px solid variables.$primary-text-color;
-    // box-shadow: variables.$shadow-s;
+    border: 1px solid var(--help-icon-color);
     width: 28px;
     height: 28px;
-    color: variables.$primary-text-color;
+    color: var(--help-icon-color);
 
     .icon {
       font-size: 1.1rem;
     }
 
     &:active {
-      color: darken(variables.$primary-text-color, 10%);
-      border: 1px solid darken(variables.$primary-text-color, 10%);
-      background-color: rgba(variables.$sky-lavender, 0.8);
+      color: color-mix(in srgb, var(--help-icon-color) 85%, black 15%);
+      border: 1px solid
+        color-mix(in srgb, var(--help-icon-color) 85%, black 15%);
     }
   }
 }
