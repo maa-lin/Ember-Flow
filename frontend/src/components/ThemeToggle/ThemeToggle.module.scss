@@ -1,4 +1,6 @@
 @use "../../styles/variables";
+@use "sass:color";
+@use "../../styles/mixins";
 
 .theme-toggle {
   display: inline-flex;
@@ -36,6 +38,11 @@
     }
   }
 
+  input:focus-visible + .track {
+    outline-offset: 1px;
+    @include mixins.focus;
+  }
+
   input:checked + .track {
     background-color: rgba(variables.$item-bg, 0.4);
 
@@ -45,6 +52,38 @@
 
       svg {
         color: variables.$primary-text-sunset;
+      }
+    }
+
+    @media (min-width: 1026px) {
+      .knob {
+        svg {
+          transition: color 0.2s ease;
+        }
+      }
+
+      &:hover {
+        .knob {
+          svg {
+            color: variables.$secondary-text-sunset;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1026px) {
+    .knob {
+      svg {
+        transition: color 0.2s ease;
+      }
+    }
+
+    &:hover {
+      .knob {
+        svg {
+          color: variables.$secondary-text-sunrise;
+        }
       }
     }
   }

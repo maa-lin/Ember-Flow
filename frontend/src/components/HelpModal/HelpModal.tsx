@@ -21,7 +21,7 @@ export const HelpModal = () => {
   return (
     <div className={styles.overlay}>
       <div
-        className={styles.help}
+        className={`${styles.help} more-stars-bg`}
         style={{ backgroundColor: currentTheme.modalBgColor }}
       >
         <CloseButton />

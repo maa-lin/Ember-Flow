@@ -1,5 +1,6 @@
 @use "variables";
 @use "sass:color";
+@use "mixins";
 
 :root {
   --primary-text-sunrise: #{variables.$primary-text-sunrise};
@@ -27,10 +28,14 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+  &:focus-visible {
+    @include mixins.focus;
+  }
 }
 
 body {
-  position: relative;
+  // position: relative;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100dvh;
@@ -39,14 +44,13 @@ body {
   font-size: 16px;
 }
 
-// 1px stars created with mutliple boxshadows in diffrent sizes and opacities.
-body::before {
-  content: "";
-  position: fixed;
-  width: 1px;
-  height: 1px;
-  box-shadow: variables.$stars;
-}
+// body::before {
+//   content: "";
+//   position: fixed;
+//   width: 1px;
+//   height: 1px;
+//   box-shadow: variables.$stars;
+// }
 
 #root {
   // max-width: 1280px;
@@ -107,6 +111,7 @@ p {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+  white-space: nowrap;
 }
 
 .btn {
@@ -119,6 +124,7 @@ p {
   font-size: 0.9rem;
   font-weight: 400;
   cursor: pointer;
+  outline-offset: 2px;
 
   &:disabled {
     box-shadow: none;

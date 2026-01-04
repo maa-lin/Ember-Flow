@@ -5,6 +5,7 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
+  padding-bottom: 0;
 
   &:active {
     .xmark {
@@ -14,5 +15,16 @@
 
   .xmark {
     font-size: 1.5rem;
+  }
+
+  @media (min-width: 1026px) {
+    .xmark {
+      transition: color 0.2s ease;
+    }
+    &:hover:not(:active) {
+      .xmark {
+        color: color-mix(in srgb, var(--x-mark) 50%, white 50%);
+      }
+    }
   }
 }

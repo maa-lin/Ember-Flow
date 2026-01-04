@@ -65,7 +65,7 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
       className={styles["list-row"]}
       style={{ "--bg-color": currentTheme.itemBg } as React.CSSProperties}
     >
-      <label>
+      <label className={styles.label}>
         <input
           type="checkbox"
           checked={props.listItem.isDone}

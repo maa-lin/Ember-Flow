@@ -16,6 +16,7 @@
     height: 100%;
     width: 100%;
     text-align: left;
+    overflow-y: auto;
 
     h1 {
       margin-bottom: 0.5rem;
@@ -90,6 +91,18 @@
       .scroll-wrapper {
         overflow-y: auto;
         padding: 0 3rem;
+      }
+
+      summary {
+        transition: background-color 0.2s ease;
+
+        &:hover:not(:active) {
+          background-color: color-mix(
+            in srgb,
+            rgba(variables.$cloud, 0.1) 90%,
+            rgba(variables.$cloud, 1) 10%
+          );
+        }
       }
     }
   }

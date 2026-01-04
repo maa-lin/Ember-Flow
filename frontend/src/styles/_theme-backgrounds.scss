@@ -64,12 +64,15 @@
     box-shadow: variables.$shadow-s;
 
     &:active {
-      background-color: color.scale(
-        variables.$secondary-btn-affirmation-bg,
+      color: color.scale(
+        variables.$secondary-btn-affirmation-text,
         $lightness: variables.$active
       );
       border: 2px solid
-        darken(variables.$secondary-btn-affirmation-text, variables.$active);
+        color.scale(
+          variables.$secondary-btn-affirmation-text,
+          $lightness: variables.$active
+        );
     }
   }
 
@@ -79,6 +82,41 @@
 
   @media (min-width: 1024px) {
     background: variables.$sunrise-background-media-min-1024px;
+
+    .btn--primary,
+    .btn--affirmation-primary {
+      transition: background-color 0.2s ease;
+    }
+
+    .btn--affirmation-secondary {
+      transition: color 0.2s ease, border 0.2s ease;
+    }
+
+    .btn--primary:hover:not(:active) {
+      background-color: color.scale(
+        variables.$primary-btn-bg,
+        $lightness: variables.$hover
+      );
+    }
+
+    .btn--affirmation-primary:hover:not(:active) {
+      background-color: color.scale(
+        variables.$primary-btn-affirmation-bg,
+        $lightness: variables.$hover-affirmation-btn
+      );
+    }
+
+    .btn--affirmation-secondary:hover:not(:active) {
+      color: color.scale(
+        variables.$secondary-btn-affirmation-text,
+        $lightness: variables.$hover-affirmation-btn
+      );
+      border: 2px solid
+        color.scale(
+          variables.$secondary-btn-affirmation-text,
+          $lightness: variables.$hover-affirmation-btn
+        );
+    }
   }
 }
 
@@ -150,9 +188,46 @@
         $lightness: variables.$active
       );
       border: 2px solid
-        darken(
+        color.scale(
           variables.$secondary-btn-affirmation-text-sunset,
-          variables.$active
+          $lightness: variables.$active
+        );
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .btn--primary,
+    .btn--affirmation-primary {
+      transition: background-color 0.2s ease;
+    }
+
+    .btn--affirmation-secondary {
+      transition: color 0.2s ease, border 0.2s ease;
+    }
+
+    .btn--primary:hover:not(:active) {
+      background-color: color.scale(
+        variables.$primary-btn-bg-sunset,
+        $lightness: variables.$hover
+      );
+    }
+
+    .btn--affirmation-primary:hover:not(:active) {
+      background-color: color.scale(
+        variables.$primary-btn-affirmation-bg-sunset,
+        $lightness: variables.$hover-affirmation-btn
+      );
+    }
+
+    .btn--affirmation-secondary:hover:not(:active) {
+      color: color.scale(
+        variables.$secondary-btn-affirmation-text-sunset,
+        $lightness: variables.$hover-affirmation-btn
+      );
+      border: 2px solid
+        color.scale(
+          variables.$secondary-btn-affirmation-text-sunset,
+          $lightness: variables.$hover-affirmation-btn
         );
     }
   }

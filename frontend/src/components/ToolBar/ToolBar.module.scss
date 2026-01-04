@@ -10,7 +10,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1rem;
+  padding: 1rem 1rem 0.7rem 1rem;
   backdrop-filter: blur(7px);
   mask-image: linear-gradient(
     to bottom,
@@ -27,6 +27,7 @@
     color: var(--breathe-btn);
     font-size: 0.8rem;
     cursor: pointer;
+    padding: 0.3rem;
 
     .tool-icon {
       display: flex;
@@ -43,12 +44,6 @@
       padding-right: 1px;
     }
 
-    // &:hover {
-    //   .tool-icon {
-    //     background-color: rgb(201, 150, 150);
-    //   }
-    // }
-
     &:active {
       .tool-icon {
         color: color-mix(in srgb, var(--breathe-btn) 90%, black 10%);
@@ -56,6 +51,27 @@
           in srgb,
           color-mix(in srgb, var(--breathe-btn) 30%, transparent),
           black 5%
+        );
+      }
+    }
+
+    &:focus-visible {
+      border-radius: 3px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .tool-icon {
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    button:hover:not(:active) {
+      .tool-icon {
+        color: color-mix(in srgb, var(--breathe-btn) 90%, white 10%);
+        background-color: color-mix(
+          in srgb,
+          color-mix(in srgb, var(--breathe-btn) 30%, transparent),
+          var(--breathe-btn) 15%
         );
       }
     }

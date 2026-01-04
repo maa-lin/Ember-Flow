@@ -56,35 +56,6 @@ $sunset-background: linear-gradient(
   ),
   linear-gradient(180deg, $sky-mahogany 0%, $sky-hazel 25%, $sky-espresso 100%);
 
-//Box-shadow stars
-$stars: 2vw 5vh 2px rgba($star, 0.8), 74vw 8vh 1px rgba($star, 0.6),
-  45vw 3vh 2px rgba($star, 0.6), 10vw 8vh 2px rgba($star, 0.8),
-  15vw 15vh 1px rgba($star, 0.7), 22vw 22vh 1px rgba($star, 0.8),
-  28vw 12vh 2px rgba($star, 0.6), 32vw 32vh 1px rgba($star, 0.7),
-  38vw 18vh 2px rgba($star, 0.8), 42vw 35vh 1px rgba($star, 0.6),
-  48vw 25vh 2px rgba($star, 0.7), 53vw 42vh 1px rgba($star, 0.7),
-  58vw 15vh 2px rgba($star, 0.8), 63vw 38vh 1px rgba($star, 0.6),
-  68vw 28vh 2px rgba($star, 0.7), 73vw 45vh 1px rgba($star, 0.8),
-  78vw 32vh 2px rgba($star, 0.8), 83vw 48vh 1px rgba($star, 0.6),
-  88vw 20vh 1px rgba($star, 0.7), 93vw 52vh 1px rgba($star, 0.7),
-  98vw 35vh 2px rgba($star, 0.8), 10vw 37vh 2px rgba($star, 0.8),
-  15vw 40vh 1px rgba($star, 0.7), 22vw 46vh 1px rgba($star, 0.8),
-  28vw 46vh 2px rgba($star, 0.6), 32vw 54vh 1px rgba($star, 0.7),
-  38vw 50vh 1px rgba($star, 0.8), 42vw 42vh 1px rgba($star, 0.6),
-  48vw 25vh 2px rgba($star, 0.7), 53vw 68vh 1px rgba($star, 0.6),
-  58vw 62vh 2px rgba($star, 0.8), 63vw 72vh 2px rgba($star, 0.8),
-  68vw 58vh 1px rgba($star, 0.7), 73vw 58vh 1px rgba($star, 0.6),
-  78vw 68vh 1px rgba($star, 0.8), 83vw 88vh 1px rgba($star, 0.6),
-  88vw 76vh 2px rgba($star, 0.7), 93vw 90vh 1px rgba($star, 0.6),
-  98vw 85vh 2px rgba($star, 0.8), 10vw 98vh 1px rgba($star, 0.8),
-  58vw 85vh 1px rgba($star, 0.8), 22vw 110vh 1px rgba($star, 0.6),
-  45vw 108vh 2px rgba($star, 0.6), 40vw 105vh 1px rgba($star, 0.8),
-  65vw 112vh 2px rgba($star, 0.6), 63vw 120vh 1px rgba($star, 0.6),
-  68vw 95vh 1px rgba($star, 0.7), 32vw 125vh 1px rgba($star, 0.8),
-  78vw 102vh 2px rgba($star, 0.8), 48vw 128vh 1px rgba($star, 0.6),
-  88vw 114vh 2px rgba($star, 0.7), 55vw 140vh 1px rgba($star, 0.8),
-  98vw 132vh 1px rgba($star, 0.8);
-
 //Text colors, also used on icon-buttons
 $primary-text-sunrise: #eed8c1;
 $secondary-text-sunrise: #f4c58f;
@@ -122,8 +93,10 @@ $shadow-m: 3px 3px 6px $shadow-color;
 $shadow-darker-s: 2px 2px 3px rgba($shadow-darker, 0.4);
 $shadow-darker-m: 2px 2px 3px $shadow-darker;
 
-// Active on buttons
-$active: 10%;
+// Active/hover on buttons
+$active: -10%;
+$hover: 10%;
+$hover-affirmation-btn: 40%;
 
 //Breathe-animation color
 $calm-blue: #8b7cfb;

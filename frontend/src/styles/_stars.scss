@@ -1,0 +1,153 @@
+@use "./variables";
+
+//Box-shadow stars
+$stars: 2vw 5vh 2px rgba(variables.$star, 0.8),
+  74vw 8vh 1px rgba(variables.$star, 0.6),
+  45vw 3vh 2px rgba(variables.$star, 0.6),
+  10vw 8vh 2px rgba(variables.$star, 0.8),
+  42vw 35vh 1px rgba(variables.$star, 0.6),
+  48vw 25vh 2px rgba(variables.$star, 0.7),
+  53vw 42vh 1px rgba(variables.$star, 0.7),
+  58vw 15vh 2px rgba(variables.$star, 0.8),
+  63vw 38vh 1px rgba(variables.$star, 0.6),
+  68vw 28vh 2px rgba(variables.$star, 0.7),
+  73vw 45vh 1px rgba(variables.$star, 0.8),
+  78vw 32vh 2px rgba(variables.$star, 0.8),
+  15vw 40vh 1px rgba(variables.$star, 0.7),
+  22vw 46vh 1px rgba(variables.$star, 0.8),
+  28vw 46vh 2px rgba(variables.$star, 0.6),
+  32vw 54vh 1px rgba(variables.$star, 0.7),
+  38vw 50vh 1px rgba(variables.$star, 0.8),
+  42vw 42vh 1px rgba(variables.$star, 0.6),
+  48vw 25vh 2px rgba(variables.$star, 0.7),
+  53vw 68vh 1px rgba(variables.$star, 0.6),
+  58vw 62vh 2px rgba(variables.$star, 0.8),
+  63vw 72vh 2px rgba(variables.$star, 0.8),
+  68vw 58vh 1px rgba(variables.$star, 0.7),
+  10vw 98vh 1px rgba(variables.$star, 0.8),
+  58vw 85vh 1px rgba(variables.$star, 0.8),
+  22vw 110vh 1px rgba(variables.$star, 0.6),
+  45vw 108vh 2px rgba(variables.$star, 0.6),
+  40vw 105vh 1px rgba(variables.$star, 0.8),
+  65vw 112vh 2px rgba(variables.$star, 0.6),
+  63vw 120vh 1px rgba(variables.$star, 0.6),
+  68vw 95vh 1px rgba(variables.$star, 0.7),
+  32vw 125vh 1px rgba(variables.$star, 0.8),
+  78vw 102vh 2px rgba(variables.$star, 0.8),
+  48vw 128vh 1px rgba(variables.$star, 0.6);
+
+$stars2: 15vw 15vh 1px rgba(variables.$star, 0.7),
+  48vw 28vh 1px rgba(variables.$star, 0.8),
+  28vw 12vh 2px rgba(variables.$star, 0.6),
+  32vw 32vh 1px rgba(variables.$star, 0.7),
+  38vw 18vh 2px rgba(variables.$star, 0.8),
+  85vw 40vh 2px rgba(variables.$star, 0.6),
+  88vw 20vh 1px rgba(variables.$star, 0.5),
+  93vw 62vh 1px rgba(variables.$star, 0.5),
+  98vw 35vh 2px rgba(variables.$star, 0.8),
+  10vw 37vh 2px rgba(variables.$star, 0.8),
+  78vw 68vh 2px rgba(variables.$star, 0.6),
+  83vw 88vh 1px rgba(variables.$star, 0.6),
+  88vw 86vh 2px rgba(variables.$star, 0.7),
+  93vw 90vh 1px rgba(variables.$star, 0.6),
+  98vw 85vh 2px rgba(variables.$star, 0.8),
+  88vw 114vh 2px rgba(variables.$star, 0.7),
+  55vw 140vh 1px rgba(variables.$star, 0.8),
+  98vw 132vh 1px rgba(variables.$star, 0.8);
+
+$stars3: 5vw 10vh 1px rgba(variables.$star, 0.6),
+  18vw 40vh 2px rgba(variables.$star, 0.7),
+  25vw 25vh 1px rgba(variables.$star, 0.8),
+  40vw 50vh 2px rgba(variables.$star, 0.6),
+  55vw 10vh 1px rgba(variables.$star, 0.7),
+  70vw 35vh 2px rgba(variables.$star, 0.8),
+  80vw 15vh 1px rgba(variables.$star, 0.6),
+  92vw 40vh 1px rgba(variables.$star, 0.7),
+  60vw 60vh 2px rgba(variables.$star, 0.8),
+  35vw 70vh 1px rgba(variables.$star, 0.6),
+  10vw 80vh 1px rgba(variables.$star, 0.7),
+  50vw 85vh 2px rgba(variables.$star, 0.8),
+  75vw 90vh 1px rgba(variables.$star, 0.6),
+  20vw 95vh 2px rgba(variables.$star, 0.7);
+
+$stars4: 5vw 10vh 3px rgba(variables.$star, 0.6),
+  18vw 40vh 2px rgba(variables.$star, 0.7),
+  25vw 25vh 3px rgba(variables.$star, 0.8),
+  40vw 50vh 2px rgba(variables.$star, 0.6),
+  55vw 10vh 3px rgba(variables.$star, 0.7),
+  70vw 35vh 2px rgba(variables.$star, 0.8),
+  80vw 15vh 3px rgba(variables.$star, 0.6),
+  92vw 40vh 3px rgba(variables.$star, 0.7),
+  60vw 60vh 2px rgba(variables.$star, 0.8),
+  35vw 70vh 3px rgba(variables.$star, 0.6),
+  10vw 80vh 3px rgba(variables.$star, 0.7),
+  50vw 85vh 2px rgba(variables.$star, 0.8),
+  75vw 90vh 3px rgba(variables.$star, 0.6),
+  20vw 95vh 2px rgba(variables.$star, 0.7);
+
+// 1px stars created with mutliple boxshadows in diffrent sizes and opacities.
+.stars-bg {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 1px;
+    height: 1px;
+    box-shadow: $stars;
+    animation: twinkle 8s infinite alternate;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 1px;
+    height: 1px;
+    box-shadow: $stars2;
+    animation: twinkle 6s infinite alternate;
+  }
+}
+
+.more-stars-bg {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 1px;
+    height: 1px;
+    box-shadow: $stars3;
+    animation: twinkle 7s infinite alternate;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@media (min-width: 1026px) {
+  .stars-bg {
+    position: relative;
+
+    &::before {
+      width: 2px;
+      height: 2px;
+      box-shadow: $stars, $stars4;
+    }
+
+    &::after {
+      width: 3px;
+      height: 3px;
+      box-shadow: $stars2;
+    }
+  }
+}

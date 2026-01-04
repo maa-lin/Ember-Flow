@@ -1,5 +1,6 @@
 @use "../../styles/variables";
 @use "sass:color";
+@use "../../styles/mixins";
 
 .challenge {
   display: flex;
@@ -11,7 +12,7 @@
   border-radius: 12px;
   // border: 1px solid rgba(119, 106, 106, 0.1);
   // box-shadow: variables.$shadow-s;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(1px);
 
   p {
     font-size: 0.8rem;
@@ -30,7 +31,8 @@
     button {
       background-color: transparent;
       border: none;
-      margin: 1rem 0.5rem 0 0.5rem;
+      margin: 1rem 0.3rem 0 0.3rem;
+      padding: 0.2rem;
       font-size: 0.8rem;
       text-decoration: underline;
       text-decoration-color: color-mix(
@@ -40,6 +42,19 @@
       );
       color: var(--link-color);
       cursor: pointer;
+
+      &:active {
+        color: color-mix(in srgb, var(--link-color) 90%, black 10%);
+        text-decoration-color: color-mix(
+          in srgb,
+          color-mix(in srgb, var(--link-color) 80%, transparent) 90%,
+          black 10%
+        );
+      }
+
+      &:focus-visible {
+        border-radius: 3px;
+      }
     }
   }
 
@@ -54,6 +69,30 @@
     .btn-container {
       button {
         margin: 1.5rem 0.5rem 0 0.5rem;
+      }
+    }
+  }
+
+  @media (min-width: 1026px) {
+    padding: 1.2rem;
+
+    p,
+    .btn-container button {
+      font-size: 0.9rem;
+    }
+
+    .btn-container {
+      button {
+        transition: color 0.2s ease, text-decoration-color 0.2s ease;
+
+        &:hover:not(:active) {
+          color: color-mix(in srgb, var(--link-color) 80%, white 20%);
+          text-decoration-color: color-mix(
+            in srgb,
+            color-mix(in srgb, var(--link-color) 80%, transparent) 80%,
+            white 20%
+          );
+        }
       }
     }
   }

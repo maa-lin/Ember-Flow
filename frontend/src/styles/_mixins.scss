@@ -1,3 +1,5 @@
+@use "./variables";
+
 @mixin modal {
   padding: 3rem 2rem;
   width: 800px;
@@ -18,4 +20,9 @@
 @mixin overlay {
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(1px);
+}
+
+@mixin focus {
+  outline: 1px solid variables.$cloud;
+  box-shadow: 0 0 6px variables.$cloud;
 }

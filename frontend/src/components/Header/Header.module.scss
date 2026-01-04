@@ -23,8 +23,22 @@
 
     &:active {
       color: color-mix(in srgb, var(--help-icon-color) 85%, black 15%);
+
       border: 1px solid
         color-mix(in srgb, var(--help-icon-color) 85%, black 15%);
+    }
+  }
+
+  @media (min-width: 1026px) {
+    a {
+      transition: color 0.2s ease, background-color 0.2s ease, border 0.2s ease;
+    }
+
+    a:hover:not(:active) {
+      color: color-mix(in srgb, var(--help-icon-color) 50%, white 50%);
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid
+        color-mix(in srgb, var(--help-icon-color) 50%, white 50%);
     }
   }
 }

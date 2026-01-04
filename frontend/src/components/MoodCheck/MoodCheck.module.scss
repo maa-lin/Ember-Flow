@@ -21,7 +21,7 @@
     margin: 2rem 0 4rem 0;
 
     li {
-      margin: 0.8rem;
+      margin: 0.5rem;
 
       button {
         display: flex;
@@ -32,6 +32,7 @@
         border: none;
         font-size: 0.8rem;
         cursor: pointer;
+        padding: 0.3rem;
 
         .mood-icon {
           width: 45px;
@@ -45,6 +46,10 @@
             color: color-mix(in srgb, var(--mood-icon-color) 90%, black 10%);
           }
         }
+
+        &:focus-visible {
+          border-radius: 3px;
+        }
       }
     }
   }
@@ -55,6 +60,20 @@
     ul {
       margin-top: 4rem;
       margin-bottom: 5rem;
+
+      li {
+        button {
+          .mood-icon {
+            transition: color 0.2s ease;
+          }
+
+          &:hover:not(:active) {
+            .mood-icon {
+              color: color-mix(in srgb, var(--mood-icon-color) 75%, white 35%);
+            }
+          }
+        }
+      }
     }
   }
 }
