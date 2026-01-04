@@ -36,4 +36,9 @@
       color: variables.$star;
     }
   }
+
+  @media (min-width: 768px) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }

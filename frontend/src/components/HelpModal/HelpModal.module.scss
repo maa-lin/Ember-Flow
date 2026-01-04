@@ -1,70 +1,95 @@
 @use "../../styles/variables";
 @use "sass:color";
+@use "../../styles/mixins";
 
-.help {
+.overlay {
   position: fixed;
   inset: 0;
-  overflow-y: auto;
   display: flex;
-  flex-direction: column;
-  padding: 3rem 2rem;
-  min-height: 100%;
-  width: 100%;
-  text-align: left;
 
-  h1 {
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
+  .help {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 2rem;
+    height: 100%;
+    width: 100%;
+    text-align: left;
 
-  strong {
-    font-weight: 500;
-  }
+    h1 {
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
 
-  details {
-    summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 1.1rem;
-      list-style: none;
-      margin: 0 0 0.5rem 0;
-      cursor: pointer;
-      padding: 0.5rem 0.5rem;
-      background-color: rgba(variables.$cloud, 0.1);
-      border-radius: 5px;
+    strong {
+      font-weight: 500;
+    }
 
-      span {
+    details {
+      summary {
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        font-size: 1.1rem;
+        list-style: none;
+        margin: 0 0 0.5rem 0;
+        cursor: pointer;
+        padding: 0.5rem 0.5rem;
+        background-color: rgba(variables.$cloud, 0.1);
+        border-radius: 5px;
+
+        span {
+          display: flex;
+          align-items: center;
+        }
+
+        svg {
+          font-size: 1rem;
+          margin-right: 0.5rem;
+        }
+
+        .chevron {
+          transition: transform 0.2s ease;
+          margin: 0;
+        }
+
+        &:active {
+          background-color: color-mix(
+            in srgb,
+            rgba(variables.$cloud, 0.1) 90%,
+            black 10%
+          );
+        }
       }
 
-      svg {
-        font-size: 1rem;
-        margin-right: 0.5rem;
+      p {
+        padding: 0 0.2rem;
       }
 
-      .chevron {
-        transition: transform 0.2s ease;
-        margin: 0;
-      }
-
-      &:active {
-        background-color: color-mix(
-          in srgb,
-          rgba(variables.$cloud, 0.1) 90%,
-          black 10%
-        );
+      &[open] {
+        .chevron {
+          transform: rotate(180deg);
+        }
       }
     }
+  }
 
-    p {
-      padding: 0 0.2rem;
+  @media (min-width: 768px) {
+    .help {
+      padding: 3rem 5rem;
     }
+  }
 
-    &[open] {
-      .chevron {
-        transform: rotate(180deg);
+  @media (min-width: 1024px) {
+    @include mixins.overlay;
+
+    .help {
+      @include mixins.modal;
+
+      .scroll-wrapper {
+        overflow-y: auto;
+        padding: 0 3rem;
       }
     }
   }

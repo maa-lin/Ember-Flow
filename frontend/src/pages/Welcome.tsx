@@ -3,12 +3,15 @@ import { getHasSeenWelcomePageFromLocalStorage } from "../utils/localStorage";
 import { Navigate } from "react-router";
 
 export const Welcome = () => {
+  if (getHasSeenWelcomePageFromLocalStorage()) {
+    return <Navigate to={"/"} replace />;
+  }
 
-    if (getHasSeenWelcomePageFromLocalStorage()) {
-        return <Navigate to={"/"} replace />
-    }
-
-    return <>
+  return (
+    <>
+      <main>
         <WelcomeModal />
+      </main>
     </>
+  );
 };

@@ -22,6 +22,7 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
   
   // CreatePortal for opening the affirmation-modal outside the app root, so it is always above everything else.
   return createPortal(
+    <div className={styles.overlay}>
     <div
       className={styles["affirmation-modal"]}
       style={{ backgroundColor: currentTheme.modalBgColor }}
@@ -32,6 +33,7 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
         Do you want to pause for a moment to breathe before continuing with your
         day?
       </p>
+      <div className={styles["btn-container"]}>
       <button className="btn btn--affirmation-primary" onClick={() => navigate("/breathe")}>
         Breathe
       </button>
@@ -44,6 +46,8 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
       >
         Skip for now
       </button>
+      </div>
+    </div>
     </div>,
     portalRoot
   );

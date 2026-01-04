@@ -1,8 +1,11 @@
 import { MoodCheck } from "../components/MoodCheck/MoodCheck";
 
 export const Mood = () => {
-
-    return <>
+  return (
+    <>
+      <main>
         <MoodCheck />
+      </main>
     </>
+  );
 };

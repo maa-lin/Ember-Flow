@@ -39,7 +39,7 @@
     &:active {
       background-color: color.scale(
         variables.$primary-btn-bg,
-        $lightness: -10%
+        $lightness: variables.$active
       );
     }
   }
@@ -52,7 +52,7 @@
     &:active {
       background-color: color.scale(
         variables.$primary-btn-affirmation-bg,
-        $lightness: -10%
+        $lightness: variables.$active
       );
     }
   }
@@ -66,10 +66,19 @@
     &:active {
       background-color: color.scale(
         variables.$secondary-btn-affirmation-bg,
-        $lightness: -10%
+        $lightness: variables.$active
       );
-      border: 2px solid darken(variables.$secondary-btn-affirmation-text, 10%);
+      border: 2px solid
+        darken(variables.$secondary-btn-affirmation-text, variables.$active);
     }
+  }
+
+  @media (min-width: 768px) {
+    background: variables.$sunrise-background-media-min-768px;
+  }
+
+  @media (min-width: 1024px) {
+    background: variables.$sunrise-background-media-min-1024px;
   }
 }
 
@@ -111,7 +120,7 @@
     &:active {
       background-color: color.scale(
         variables.$primary-btn-bg-sunset,
-        $lightness: -10%
+        $lightness: variables.$active
       );
     }
   }
@@ -124,7 +133,7 @@
     &:active {
       background-color: color.scale(
         variables.$primary-btn-affirmation-bg-sunset,
-        $lightness: -10%
+        $lightness: variables.$active
       );
     }
   }
@@ -138,10 +147,13 @@
     &:active {
       background-color: color.scale(
         variables.$secondary-btn-affirmation-bg,
-        $lightness: -10%
+        $lightness: variables.$active
       );
       border: 2px solid
-        darken(variables.$secondary-btn-affirmation-text-sunset, 10%);
+        darken(
+          variables.$secondary-btn-affirmation-text-sunset,
+          variables.$active
+        );
     }
   }
 }

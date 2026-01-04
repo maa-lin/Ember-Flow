@@ -49,7 +49,7 @@ body::before {
 }
 
 #root {
-  max-width: 1280px;
+  // max-width: 1280px;
   margin: 0 auto;
   text-align: center;
   height: 100%;
@@ -70,7 +70,7 @@ summary {
 
 h1 {
   font-size: 2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   text-align: center;
 }
 
@@ -129,4 +129,34 @@ p {
   text-align: center;
   font-size: 0.8rem;
   margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 0 4rem 8rem 4rem;
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+    }
+  }
+
+  .btn {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #root {
+    max-height: 100vh;
+
+    main {
+      max-width: 500px;
+      margin: auto;
+      padding: 0;
+    }
+  }
 }

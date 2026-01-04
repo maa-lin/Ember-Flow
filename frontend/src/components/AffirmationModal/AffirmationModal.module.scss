@@ -1,31 +1,74 @@
 @use "../../styles/variables";
+@use "../../styles/mixins";
 
-.affirmation-modal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.overlay {
   position: fixed;
   inset: 0;
-  padding: 4rem 2rem 2rem 2rem;
   height: 100%;
   width: 100%;
   z-index: 1000;
 
-  .affirmation {
-    font-size: 1.6rem;
-    padding-bottom: 2rem;
-    font-family: "Cormorant Garamond", Cambria, "Times New Roman", serif;
+  .affirmation-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem 2rem 2rem;
+    height: 100%;
+    width: 100%;
+
+    .affirmation {
+      font-size: 1.6rem;
+      padding-bottom: 2rem;
+      font-family: "Cormorant Garamond", Cambria, "Times New Roman", serif;
+    }
+
+    .prompt {
+      font-size: 0.8rem;
+      margin: 2rem 0;
+    }
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: variables.$icon-gold;
+    }
+
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  @media (min-width: 768px) {
+    .affirmation-modal {
+      padding: 4rem 4rem 2rem 4rem;
+
+      .affirmation,
+      .prompt {
+        max-width: 80%;
+      }
+
+      .affirmation {
+        font-size: 1.8rem;
+      }
+
+      .prompt {
+        font-size: 1rem;
+      }
+
+      .btn-container {
+        flex-direction: row;
+      }
+    }
   }
 
-  .prompt {
-    font-size: 0.8rem;
-    margin-bottom: 2rem;
-  }
+  @media (min-width: 1024px) {
+    @include mixins.overlay;
 
-  .icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: variables.$icon-gold;
+    .affirmation-modal {
+      @include mixins.modal;
+      padding: 5rem 2rem 2rem 2rem;
+      margin: 4rem auto 0 auto;
+    }
   }
 }

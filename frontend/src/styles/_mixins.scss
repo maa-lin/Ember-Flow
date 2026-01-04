@@ -1,0 +1,21 @@
+@mixin modal {
+  padding: 3rem 2rem;
+  width: 800px;
+  margin: auto;
+  height: 75%;
+  border-radius: 15px;
+  box-shadow: 2px 2px 15px rgba(14, 12, 13, 0.628);
+  overflow: hidden;
+}
+
+@mixin welcome-mood {
+  @include modal;
+  padding: 3rem 6rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 237, 233, 0.03);
+}
+
+@mixin overlay {
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+}
