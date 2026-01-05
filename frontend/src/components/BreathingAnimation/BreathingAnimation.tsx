@@ -4,12 +4,12 @@ import styles from "./BreathingAnimation.module.scss";
 export const BreathingAnimation = () => {
 
     return <div className={styles["breathe-container"]}>
-        {[...Array(5)].map((_, i) => (
+        {[...Array(5)].map((_, i) => ( // Create 5 spans
             <motion.span
                 key={i}
                 className={styles.ring}
                 animate={{
-                    scale: [1 + i * 0.15, 1.8 + i * 0.8, 1 + i * 0.15]
+                    scale: [1 + i * 0.15, 1.8 + i * 0.8, 1 + i * 0.15] // Use i to scale the spans
                 }}
                 transition={{
                     duration: 12,

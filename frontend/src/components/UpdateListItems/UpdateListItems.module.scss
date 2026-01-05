@@ -9,10 +9,10 @@
   margin: 0.3rem 0;
   padding: 0.5rem;
   border-radius: 5px;
-  background-color: color-mix(in srgb, var(--bg-color) 30%, transparent);
+  background-color: color-mix(in srgb, var(--bg-color) 40%, transparent);
   backdrop-filter: blur(1px);
-  // border: 1px solid rgba(168, 150, 165, 0.1);
-  // box-shadow: variables.$shadow-s;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: var(--shadow);
 
   .label:focus-within span:first-of-type {
     outline-offset: 1px;

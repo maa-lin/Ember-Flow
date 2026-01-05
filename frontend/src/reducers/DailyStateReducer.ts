@@ -1,7 +1,6 @@
-import { Challenge } from "../components/Challenge/Challenge";
 import type { DailyState } from "../models/DailyState";
 import type { IChallenge } from "../models/IChallenge";
-import { ListItem, type Lists } from "../models/List";
+import { ListItem } from "../models/List";
 
 export const ActionTypes = {
   TOGGLED: "TOGGLED",

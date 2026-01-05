@@ -6,8 +6,10 @@ import { Challenge } from "../components/Challenge/Challenge";
 import { Header } from "../components/Header/Header";
 import { ToolBar } from "../components/ToolBar/ToolBar";
 import { getHasSeenWelcomePageFromLocalStorage } from "../utils/localStorage";
+import { useTitle } from "../hooks/useTitle";
 
 export const Home = () => {
+    useTitle("Home");
 
     const moodContext = useContext(MoodContext);
 

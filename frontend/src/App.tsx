@@ -15,7 +15,6 @@ import { dailyReset } from "./utils/dailyReset";
 function App() {
 
   const [mood, setMood] = useState<Mood>(getMoodFromLocalStorage());
-  console.log(mood);
 
   const [theme, setTheme] = useState<ThemeKey>(getThemeFromLocalStorage() || "sunrise");
   const currentTheme = themes[theme];
@@ -38,7 +37,6 @@ function App() {
   }, [dailyState] );
 
   useEffect(() => {
-
     if (checkIfNewDay()) { // Check if daily reset-time has passed (03.00) on app-load.
       dailyReset(dispatch, setMood);
     };
@@ -59,7 +57,6 @@ function App() {
     // multiple listners. 
     // return () => {} is a cleanup function.
     return () => { document.removeEventListener("visibilitychange", handleVisibility) };
-
   }, []);
 
   return (

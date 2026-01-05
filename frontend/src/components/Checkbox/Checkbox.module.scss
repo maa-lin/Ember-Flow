@@ -48,11 +48,15 @@
   @media (min-width: 768px) {
     width: 1.5rem;
     height: 1.5rem;
+
+    .checked::after {
+      transform: translate(-51%, -48%);
+    }
   }
 
   @media (min-width: 1024px) {
     .checked::after {
-      transform: translate(-52%, -42%);
+      transform: translate(-51%, -50%);
     }
   }
 }

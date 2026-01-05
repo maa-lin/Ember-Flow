@@ -27,12 +27,12 @@ export const Challenge = () => {
   const [status, setStatus] = useState<ChallengeStatus>(getChallengeStatusFromLocalStorage());
 
   useEffect(() => {
-        if (showAffirmation) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-        }
-    }, [showAffirmation] );
+    if (showAffirmation) {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "";
+    }
+  }, [showAffirmation] );
     
   useEffect(() => {
     const getData = async () => {
@@ -68,9 +68,14 @@ export const Challenge = () => {
   };
 
   return (
-    <div style={{ "--bg-color": currentTheme.itemBg } as React.CSSProperties} className={styles.challenge}>
+    <div style={
+      { 
+        "--bg-color": currentTheme.itemBg,
+        "--box-shadow": currentTheme.shadowS
+     } as React.CSSProperties} className={styles.challenge}>
       
       <h2><MdAutoAwesome />Daily Challenge</h2>
+
       {status === "active" && 
         <>
           <p>{loading ? "Loading..." : dailyState?.challenge?.text}</p>
@@ -81,13 +86,14 @@ export const Challenge = () => {
         </>
       }
 
-      {status === "completed" && <p>
+      {status === "completed" && 
+        <p>
           You completed today’s challenge. A new one will be waiting for you tomorrow.
-
         </p>
       }
 
-      {status === "skipped" && <p>
+      {status === "skipped" && 
+        <p>
           A new challenge will be waiting for you tomorrow.
         </p>
       } 
@@ -98,7 +104,6 @@ export const Challenge = () => {
           affirmation={dailyState.challenge.affirmation}
         />
       )}
-
     </div>
   );
 };

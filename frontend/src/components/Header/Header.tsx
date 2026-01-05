@@ -20,12 +20,11 @@ export const Header = () => {
             {
               "--help-icon-color": currentTheme.primaryTextColor,
               "--help-icon-color-bg": currentTheme.helpIconBg,
+              "--help-shadow": currentTheme.shadowS
             } as React.CSSProperties
           }
         >
-          <FaQuestion
-            className={styles.icon}
-          />
+          <FaQuestion className={styles.icon} />
         </NavLink>
       </nav>
     </header>

@@ -85,7 +85,7 @@ $stars4: 5vw 10vh 3px rgba(variables.$star, 0.6),
   75vw 90vh 3px rgba(variables.$star, 0.6),
   20vw 95vh 2px rgba(variables.$star, 0.7);
 
-// 1px stars created with mutliple boxshadows in diffrent sizes and opacities.
+// 1px stars created with mutliple boxshadows in diffrent sizes and opacities. Inspired by this article: https://prismic.io/blog/css-background-effects
 .stars-bg {
   position: relative;
 

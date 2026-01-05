@@ -58,20 +58,20 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
       e.currentTarget.blur();
     }
   };
-  console.log(props.listItem.isDone);
 
   return (
     <li
       className={styles["list-row"]}
-      style={{ "--bg-color": currentTheme.itemBg } as React.CSSProperties}
+      style={{ 
+        "--bg-color": currentTheme.itemBg,
+        "--shadow": currentTheme.shadowS
+      } as React.CSSProperties}
     >
       <label className={styles.label}>
         <input
           type="checkbox"
           checked={props.listItem.isDone}
-          disabled={
-            isEditing || !props.listItem.text.trim() || props.listItem.isDone
-          }
+          disabled={ isEditing || !props.listItem.text.trim() || props.listItem.isDone }
           onChange={toggleListItem}
           className="sr-only"
         />
@@ -90,21 +90,15 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
 
       <input
         type="text"
+        maxLength={25}
         id={`${props.listType}${props.index + 1}`}
         value={props.listItem.text}
-        className={`${styles["input-item"]} ${
-          props.listItem.isDone ? styles.checked : ""
-        }`}
+        className={`${styles["input-item"]} ${ props.listItem.isDone ? styles.checked : "" }`}
         disabled={props.listItem.isDone}
-        onChange={(e) => {
-          updateListItem(e.target.value);
-        }}
-        onBlur={() => {
-          setIsEditing(false);
-        }}
-        onClick={() => {
-          setIsEditing(true);
-        }}
+        onChange={(e) => { updateListItem(e.target.value); }}
+        onFocus={() => { setIsEditing(true); }}
+        onBlur={() => { setIsEditing(false); }}
+        onClick={() => { setIsEditing(true); }}
         onKeyDown={handleOnKeyDown}
         style={
           {
@@ -116,9 +110,7 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
 
       <GetListAffirmation
         isOpen={showAffirmation}
-        onClose={() => {
-          setShowAffirmation(false);
-        }}
+        onClose={() => { setShowAffirmation(false); }}
         listType={props.listType}
       />
     </li>

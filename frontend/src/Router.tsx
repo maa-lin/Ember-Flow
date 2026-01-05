@@ -1,4 +1,3 @@
-
 import { Home } from "./pages/Home";
 import { Welcome } from "./pages/Welcome";
 import { Mood } from "./pages/Mood";

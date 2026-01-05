@@ -14,6 +14,7 @@
     border-radius: 999px;
     background-color: rgba(variables.$sky-lavender, 0.3);
     transition: background 0.2 ease;
+    box-shadow: inset variables.$shadow-s;
 
     .knob {
       position: absolute;
@@ -45,6 +46,7 @@
 
   input:checked + .track {
     background-color: rgba(variables.$item-bg, 0.4);
+    box-shadow: inset 2px 2px 3px rgba(33, 10, 1, 0.925);
 
     .knob {
       transform: translateX(24px);

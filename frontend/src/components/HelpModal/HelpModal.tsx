@@ -78,7 +78,8 @@ export const HelpModal = () => {
               <strong>Things to focus on</strong> can be a task you want to
               complete, or simply an intention you want to carry with you
               through the day. <strong>Self-care</strong> are small acts to take
-              care of yourself — whatever feels right for you.
+              care of yourself — whatever feels right for you. Keep your task and 
+              self-care items short and clear, max 25 characters are allowed.
             </p>
             <p>
               Your day resets at <strong>3:00 AM</strong>, giving you a fresh
@@ -91,7 +92,7 @@ export const HelpModal = () => {
             </p>
             <p>
               Tap a focus or self-care item to <strong>edit</strong>, and tap
-              the <strong>checkbox</strong> next to it to mark it as done.
+              the round <strong>checkbox</strong> next to it to mark it as done.
             </p>
             <p>
               You can open <strong>Breathe</strong> anytime you need to pause or

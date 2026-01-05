@@ -16,7 +16,7 @@
     to bottom,
     transparent,
     black 25%
-  ); //Fades the top of the header, only 25% of the blur is visible, so there is no sharp line.
+  ); //Mask image to fade the top of the header, only 25% of the blur is visible, so there is no sharp line.
 
   button {
     display: flex;

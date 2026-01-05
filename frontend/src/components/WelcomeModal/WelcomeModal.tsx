@@ -13,7 +13,7 @@ export const WelcomeModal = () => {
 
     return <div className={styles.welcome}>
         <h1>Ember Flow</h1>
-        <p className="tagline">— Tend your energy, one gentle moment at a time. </p>
+        <p className="tagline">— Tend your energy, one gentle moment at a time.</p>
          <p>
             This isn't a to-do list.<br />
             It's a place to focus on just a few things — and care for yourself along the way.

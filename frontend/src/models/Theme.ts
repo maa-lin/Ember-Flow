@@ -19,8 +19,8 @@ type Themes = {
 export const themes: Themes = {
     sunrise: {
         theme: "theme-sunrise",
-        primaryTextColor: "#eed8c1",
-        secondaryTextColor: "#f4c58f",
+        primaryTextColor: "var(--primary-text-sunrise)",
+        secondaryTextColor: "var(--secondary-text-sunrise)",
         modalBgColor: "var(--modal-bg-sunrise)",
         itemBg: "var(--item-bg-sunrise)",
         opacity: "0.5",

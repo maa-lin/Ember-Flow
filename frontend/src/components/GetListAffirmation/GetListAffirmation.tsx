@@ -17,14 +17,11 @@ export const GetListAffirmation = (props: GetListAffirmationProps) => {
         if (!props.isOpen) return;
 
         const getData = async () => {
-            
             try {
                 const data = await getAffirmation(props.listType);
                 setAffirmation(data);
-                
             } catch (error) {
                 console.error(error);
-
             }
         };
         
