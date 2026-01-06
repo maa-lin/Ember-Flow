@@ -95,6 +95,7 @@ $stars4: 5vw 10vh 3px rgba(variables.$star, 0.6),
     inset: 0;
     width: 1px;
     height: 1px;
+    border-radius: 50%;
     box-shadow: $stars;
     animation: twinkle 8s infinite alternate;
   }
@@ -105,6 +106,7 @@ $stars4: 5vw 10vh 3px rgba(variables.$star, 0.6),
     inset: 0;
     width: 1px;
     height: 1px;
+    border-radius: 50%;
     box-shadow: $stars2;
     animation: twinkle 6s infinite alternate;
   }
@@ -119,6 +121,7 @@ $stars4: 5vw 10vh 3px rgba(variables.$star, 0.6),
     inset: 0;
     width: 1px;
     height: 1px;
+    border-radius: 50%;
     box-shadow: $stars3;
     animation: twinkle 7s infinite alternate;
   }

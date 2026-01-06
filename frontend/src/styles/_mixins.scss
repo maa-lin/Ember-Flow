@@ -4,10 +4,24 @@
   padding: 3rem 2rem;
   width: 800px;
   margin: auto;
-  height: 75%;
+  height: 80%;
   border-radius: 15px;
   box-shadow: 2px 2px 15px rgba(14, 12, 13, 0.628);
   overflow: hidden;
+  opacity: 0;
+  transform: translate(12px) scale(0.96);
+  animation: modalOpen 250ms ease-out forwards;
+
+  @keyframes modalOpen {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0) scale(1);
+    }
+  }
 }
 
 @mixin welcome-mood {
@@ -20,6 +34,17 @@
 @mixin overlay {
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(1px);
+  opacity: 0;
+  animation: overlayFade 200ms ease-out forwards;
+
+  @keyframes overlayFade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 @mixin focus {

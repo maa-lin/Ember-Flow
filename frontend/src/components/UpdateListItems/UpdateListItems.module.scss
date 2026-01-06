@@ -29,15 +29,6 @@
     &:focus-visible {
       border-radius: 3px;
     }
-
-    // Removing input background color from chrome autocomplete: https://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill:active {
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: var(--input-color) !important;
-    }
   }
 
   .checked {

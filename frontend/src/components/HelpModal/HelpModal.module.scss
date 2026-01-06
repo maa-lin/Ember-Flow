@@ -1,6 +1,7 @@
 @use "../../styles/variables";
 @use "sass:color";
 @use "../../styles/mixins";
+@use "../../styles/base";
 
 .overlay {
   position: fixed;
@@ -17,6 +18,8 @@
     width: 100%;
     text-align: left;
     overflow-y: auto;
+    opacity: 0;
+    animation: modalFadeIn 0.3s ease-out forwards;
 
     h1 {
       margin-bottom: 0.5rem;

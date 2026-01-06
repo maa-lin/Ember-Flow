@@ -28,7 +28,7 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
       style={{ backgroundColor: currentTheme.modalBgColor }}
     >
       <MdAutoAwesome className={styles.icon} />
-      <p className={styles.affirmation}>{props.affirmation}</p>
+      <p className={styles.affirmation}>{props.affirmation[0].toUpperCase() + props.affirmation.slice(1)}</p>
       <p className={styles.prompt}>
         Do you want to pause for a moment to breathe before continuing with your
         day?

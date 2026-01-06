@@ -1,5 +1,6 @@
 @use "../../styles/variables";
 @use "../../styles/mixins";
+@use "../../styles/base";
 
 .overlay {
   position: fixed;
@@ -16,6 +17,8 @@
     padding: 4rem 2rem 2rem 2rem;
     height: 100%;
     width: 100%;
+    opacity: 0;
+    animation: modalFadeIn 0.3s ease-out forwards;
 
     .affirmation {
       font-size: 1.6rem;
