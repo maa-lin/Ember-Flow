@@ -72,11 +72,15 @@
   }
 
   @media (min-width: 1026px) {
-    padding: 1.2rem;
+    padding: 1.2rem 0.5rem 0.5rem 0.5rem;
 
     p,
     .btn-container button {
       font-size: 0.9rem;
+    }
+
+    p {
+      width: 85%;
     }
 
     h2 {
@@ -86,6 +90,7 @@
     .btn-container {
       button {
         transition: color 0.2s ease, text-decoration-color 0.2s ease;
+        margin-top: 0;
 
         &:hover:not(:active) {
           color: color-mix(in srgb, var(--link-color) 80%, white 20%);

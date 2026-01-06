@@ -79,7 +79,7 @@ export const HelpModal = () => {
               complete, or simply an intention you want to carry with you
               through the day. <strong>Self-care</strong> are small acts to take
               care of yourself — whatever feels right for you. Keep your task and 
-              self-care items short and clear, max 25 characters are allowed.
+              self-care items short and clear, max 30 characters are allowed.
             </p>
             <p>
               Your day resets at <strong>3:00 AM</strong>, giving you a fresh

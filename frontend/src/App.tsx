@@ -2,7 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 import { DailyStateReducer } from "./reducers/DailyStateReducer";
 import { getDailyStateFromLocalStorage, getMoodFromLocalStorage, getThemeFromLocalStorage, saveDailyStateToLocalStorage } from "./utils/localStorage";
 import { ListItem } from "./models/List";
-import { checkIfNewDay } from "./utils/checkTimeStamp";
+import { checkIfNewDay } from "./utils/checkIfNewDay";
 import { router } from "./Router";
 import { RouterProvider } from "react-router";
 import { MoodContext } from "./contexts/MoodContext";

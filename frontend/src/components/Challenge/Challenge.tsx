@@ -94,7 +94,7 @@ export const Challenge = () => {
 
       {status === "active" && 
         <>
-          <p>{loading ? "Loading..." : dailyState?.challenge?.text}</p>
+          <p>{loading ? "Loading..." : `${dailyState?.challenge?.text[0].toUpperCase()}${dailyState.challenge?.text.slice(1)}`}</p>
           <div className={styles["btn-container"]}>
             <button
               style={{ "--link-color": currentTheme.linkColor } as React.CSSProperties} 

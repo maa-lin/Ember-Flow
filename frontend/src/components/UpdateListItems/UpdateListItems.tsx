@@ -107,11 +107,15 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
 
       <input
         type="text"
-        maxLength={25}
+        maxLength={35}
         autoComplete="off"
         id={`${props.listType}${props.index + 1}`}
         value={props.listItem.text}
-        className={`${styles["input-item"]} ${ props.listItem.isDone ? styles.checked : "" }`}
+        className={`
+          ${styles["input-item"]} 
+          ${ props.listItem.isDone ? styles.checked : "" }
+          ${!props.listItem.text.trim() ? styles.empty : ""}
+        `}
         disabled={props.listItem.isDone}
         onChange={(e) => { updateListItem(e.target.value); }}
         onFocus={() => { setIsEditing(true); }}

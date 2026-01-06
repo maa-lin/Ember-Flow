@@ -65,6 +65,10 @@
       transition: background-color 0.2s ease, color 0.2s ease;
     }
 
+    button {
+      font-size: 0.9rem;
+    }
+
     button:hover:not(:active) {
       .tool-icon {
         color: color-mix(in srgb, var(--breathe-btn) 90%, white 10%);

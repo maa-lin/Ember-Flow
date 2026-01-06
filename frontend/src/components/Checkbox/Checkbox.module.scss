@@ -10,10 +10,14 @@
   border-radius: 50%;
   box-sizing: border-box;
   cursor: pointer;
-  transition: background 0.2 ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
 
   &:has(.checked) {
     cursor: default;
+  }
+
+  &:hover {
+    box-shadow: 0 0 8px rgba(variables.$cloud, 0.6);
   }
 
   .checked {

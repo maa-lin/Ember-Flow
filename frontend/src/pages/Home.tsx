@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Lists } from "../components/Lists/Lists";
 import { MoodContext } from "../contexts/MoodContext";
 import { Navigate } from "react-router";
