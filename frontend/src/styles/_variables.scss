@@ -34,25 +34,25 @@ $sunrise-background-media-min-1024px: radial-gradient(
   linear-gradient(180deg, $sky-lavender 0%, $sky-rose 35%, $sky-mauve 100%);
 
 // Background color for "sunset" theme
-$sky-mahogany: #311815;
-$sky-hazel: #2c1714;
-$sky-espresso: #23120f;
+$sky-mahogany: #23110f;
+$sky-hazel: #23100d;
+$sky-espresso: #1c1210;
 
 // Modal and task item background "sunset" theme
 $modal-walnut: #412721;
-$item-bg: #52392d;
+$item-bg: #3d2b22;
 
 $sunset-background: linear-gradient(
     130deg,
     rgba($cloud, 0) 30%,
-    rgba($cloud, 0.5) 45%,
+    rgba($cloud, 0.4) 45%,
     rgba($cloud, 0) 70%
   ),
   linear-gradient(
     130deg,
-    rgba(255, 215, 100, 0) 55%,
-    rgba(255, 215, 100, 0.3) 58%,
-    rgba(255, 215, 100, 0) 90%
+    rgba($cloud, 0) 55%,
+    rgba($cloud, 0.2) 58%,
+    rgba($cloud, 0) 90%
   ),
   linear-gradient(180deg, $sky-mahogany 0%, $sky-hazel 25%, $sky-espresso 100%);
 
@@ -61,7 +61,7 @@ $primary-text-sunrise: #eed8c1;
 $secondary-text-sunrise: #ffcf98;
 
 $primary-text-sunset: #fcd4aa;
-$secondary-text-sunset: #e68f43;
+$secondary-text-sunset: #f3a33a;
 
 //Button colors and shadows
 $primary-btn-bg: $sky-mauve;

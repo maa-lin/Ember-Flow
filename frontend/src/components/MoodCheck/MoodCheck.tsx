@@ -27,8 +27,6 @@ export const MoodCheck = () => {
     saveMoodToLocalStorage(mood);
   };
 
-  console.log(moodContext.mood);
-
   return (
     <div className={styles["mood-check"]}>
       <h1>How are you feeling today?</h1>
@@ -41,11 +39,9 @@ export const MoodCheck = () => {
           >
             <FaFaceLaughBeam
               style={{
-                "--mood-icon-color": currentTheme.secondaryTextColor,
-                opacity:
-                  moodContext.mood === "happy" ? 1 : currentTheme.opacity,
+                "--mood-icon-color": currentTheme.secondaryTextColor
               } as React.CSSProperties}
-              className={`${styles["mood-icon"]}`}
+              className={`${styles["mood-icon"]} ${moodContext.mood === "happy" ? styles.selected : "" }`}
             />
             Happy
           </button>
@@ -57,11 +53,9 @@ export const MoodCheck = () => {
           >
             <FaFaceSmile
                style={{
-                "--mood-icon-color": currentTheme.secondaryTextColor,
-                opacity:
-                  moodContext.mood === "calm" ? 1 : currentTheme.opacity,
+                "--mood-icon-color": currentTheme.secondaryTextColor
               } as React.CSSProperties}
-              className={`${styles["mood-icon"]}`}
+              className={`${styles["mood-icon"]} ${moodContext.mood === "calm" ? styles.selected : "" }`}
             />
             Calm
           </button>
@@ -73,11 +67,9 @@ export const MoodCheck = () => {
           >
             <FaFaceMeh
                style={{
-                "--mood-icon-color": currentTheme.secondaryTextColor,
-                opacity:
-                  moodContext.mood === "neutral" ? 1 : currentTheme.opacity,
+                "--mood-icon-color": currentTheme.secondaryTextColor
               } as React.CSSProperties}
-              className={`${styles["mood-icon"]}`}
+              className={`${styles["mood-icon"]} ${moodContext.mood === "neutral" ? styles.selected : "" }`}
             />
             Neutral
           </button>
@@ -89,11 +81,9 @@ export const MoodCheck = () => {
           >
             <FaFaceTired
                style={{
-                "--mood-icon-color": currentTheme.secondaryTextColor,
-                opacity:
-                  moodContext.mood === "stressed" ? 1 : currentTheme.opacity,
+                "--mood-icon-color": currentTheme.secondaryTextColor
               } as React.CSSProperties}
-              className={`${styles["mood-icon"]}`}
+              className={`${styles["mood-icon"]} ${moodContext.mood === "stressed" ? styles.selected : "" }`}
             />
             Stressed
           </button>

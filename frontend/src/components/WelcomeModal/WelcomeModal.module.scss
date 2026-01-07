@@ -1,4 +1,5 @@
 @use "../../styles/mixins";
+@use "../../styles/base";
 
 .welcome {
   position: fixed;
@@ -19,12 +20,22 @@
     margin-top: 2rem;
   }
 
+  p:nth-of-type(2),
+  p:nth-of-type(3) {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
   button {
     margin-top: auto;
   }
 
   @media (min-width: 768px) {
     padding: 3rem 5rem;
+
+    p {
+      font-size: 1rem;
+    }
   }
 
   @media (min-width: 1024px) {

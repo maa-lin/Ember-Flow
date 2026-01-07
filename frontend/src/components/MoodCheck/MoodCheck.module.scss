@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5rem 2rem;
+  padding: 4rem 2rem;
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -41,6 +41,11 @@
           height: 45px;
           margin-bottom: 0.4rem;
           color: var(--mood-icon-color);
+          opacity: 0.5;
+        }
+
+        .selected {
+          opacity: 1;
         }
 
         &:active {
@@ -70,7 +75,7 @@
           }
 
           &:hover:not(:active) {
-            .mood-icon {
+            .mood-icon:not(.selected) {
               color: color-mix(in srgb, var(--mood-icon-color) 75%, white 35%);
             }
           }

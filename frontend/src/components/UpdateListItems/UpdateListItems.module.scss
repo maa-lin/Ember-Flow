@@ -20,8 +20,8 @@
   }
 
   .input-item {
-    padding: 0.1rem 0.3rem;
-    margin: 0 0.3rem 0 0.5rem;
+    padding: 0.1rem 0.3rem 0 0.3rem;
+    margin: 0 0.3rem 0 0;
     width: 100%;
     border: none;
     background-color: transparent;
@@ -36,6 +36,7 @@
 
   .empty {
     border-bottom: 1px solid rgba(variables.$cloud, 0.4);
+    margin: 0 0.3rem 0 0.5rem;
   }
 
   .checked {

@@ -63,16 +63,10 @@
     h2 {
       font-size: 1.2rem;
     }
-
-    .btn-container {
-      button {
-        margin: 1.5rem 0.5rem 0 0.5rem;
-      }
-    }
   }
 
   @media (min-width: 1026px) {
-    padding: 1.2rem 0.5rem 0.5rem 0.5rem;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
 
     p,
     .btn-container button {

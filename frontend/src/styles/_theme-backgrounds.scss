@@ -17,9 +17,17 @@
 
   a {
     color: variables.$primary-text-sunrise;
+    transition: color 0.2s ease;
 
     &:active {
       color: variables.$secondary-text-sunrise;
+    }
+
+    &:hover:not(:active) {
+      color: color.scale(
+        variables.$primary-text-sunrise,
+        $lightness: variables.$hover-affirmation-btn
+      );
     }
   }
 
@@ -136,9 +144,17 @@
 
   a {
     color: variables.$primary-text-sunset;
+    transition: color 0.2s ease;
 
     &:active {
       color: variables.$secondary-text-sunset;
+    }
+
+    &:hover:not(:active) {
+      color: color.scale(
+        variables.$primary-btn-affirmation-bg-sunset,
+        $lightness: variables.$hover-affirmation-btn
+      );
     }
   }
 

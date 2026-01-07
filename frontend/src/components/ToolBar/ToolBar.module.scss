@@ -10,12 +10,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 1rem 1rem 0.7rem 1rem;
+  padding: 2.5rem 1rem 0.7rem 1rem;
   backdrop-filter: blur(7px);
   mask-image: linear-gradient(
     to bottom,
     transparent,
-    black 25%
+    black 20%
   ); //Mask image to fade the top of the header, only 25% of the blur is visible, so there is no sharp line.
 
   button {
@@ -58,6 +58,9 @@
     &:focus-visible {
       border-radius: 3px;
     }
+  }
+  @media (min-width: 768px) {
+    padding-top: 3.5rem;
   }
 
   @media (min-width: 1024px) {

@@ -45,7 +45,7 @@
   }
 
   input:checked + .track {
-    background-color: rgba(variables.$item-bg, 0.4);
+    background-color: rgba(variables.$item-bg, 0.5);
     box-shadow: inset 2px 2px 3px rgba(33, 10, 1, 0.925);
 
     .knob {
