@@ -17,6 +17,7 @@ Ember Flow helps you manage fewer but essential tasks while helping you feel cal
 
 ## Project structure
 
+```text
 Ember Flow
 |── Backend
 | |── src
@@ -41,6 +42,7 @@ Ember Flow
 | |── package.json
 | |── index.html
 |── README.md
+```
 
 ## Features
 
