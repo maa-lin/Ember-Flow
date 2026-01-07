@@ -27,7 +27,7 @@ Ember Flow
 | |── package.json
 |── Frontend
 | |── src
-| | |── **tests**
+| | |── `__tests__`
 | | |── components
 | | |── contexts
 | | |── hooks
