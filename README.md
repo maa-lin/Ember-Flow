@@ -81,16 +81,6 @@ This application follows basic web accessibility best practices, including:
 - Sufficient color contrast
 - Text together with interactive icons
 
-## Screenshots
-
-![Main page](./frontend/src/assets/screenshots/main-page.png)
-![Main page tablet](./frontend/src/assets/screenshots/main-page-tablet.png)
-![Main page laptop](./frontend/src/assets/screenshots/help-page-laptop.png)
-![Main page sunset theme](./frontend/src/assets/screenshots/main-page-sunset-theme.png)
-![Mood check-in](./frontend/src/assets/screenshots/mood-check-in.png)
-![Breathing animation](./frontend/src/assets/screenshots/breathing-animation.png)
-![Help page tablet](./frontend/src/assets/screenshots/help-page-tablet.png)
-
 ## Getting Started
 
 ### Prerequisites
@@ -123,3 +113,12 @@ npm run dev
 
 
 ```
+
+## Screenshots
+
+![Main page](./frontend/src/assets/screenshots/main-page.png)
+![Main page tablet](./frontend/src/assets/screenshots/main-page-tablet.png)
+![Main page laptop](./frontend/src/assets/screenshots/help-page-laptop.png)
+![Main page sunset theme](./frontend/src/assets/screenshots/main-page-sunset-theme.png)
+![Mood check-in](./frontend/src/assets/screenshots/mood-check-in.png)
+![Breathing animation](./frontend/src/assets/screenshots/breathing-animation.png)
