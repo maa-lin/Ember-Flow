@@ -44,7 +44,7 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
   }, [showAffirmation]);
 
   const updateListItem = (text: string) => {
-    if (!isEditing) return;
+    if (!isEditing || props.listItem.isDone) return;
 
     dispatch({
       type: ActionTypes.UPDATED,
@@ -53,7 +53,7 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
   };
 
   const toggleListItem = () => {
-    if (isEditing || !props.listItem.text.trim()) return;
+    if (isEditing || !props.listItem.text.trim() || props.listItem.isDone) return;
 
     dispatch({
       type: ActionTypes.TOGGLED,
@@ -62,7 +62,7 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
 
     requestAnimationFrame(() => { // Waits until the element actually exists before triggering animation
         reward();
-      });
+    });
 
     if (!props.listItem.isDone) {
       setShowAffirmation(true);
@@ -88,14 +88,14 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
         <input
           type="checkbox"
           checked={props.listItem.isDone}
-          disabled={ isEditing || !props.listItem.text.trim() || props.listItem.isDone }
+          aria-disabled={isEditing || !props.listItem.text.trim() || props.listItem.isDone } // Disables behaviour, not focus so screen readers still see checkbox
           onChange={toggleListItem}
           className="sr-only"
         />
 
         <Checkbox isDone={props.listItem.isDone} />
 
-        <span className="sr-only">Mark as done</span>
+        <span className="sr-only">{props.listItem.text.trim() ? "Mark as done" : "Enter text to enable checkbox"}</span>
       </label>
 
       <label
@@ -116,7 +116,7 @@ export const UpdateListItems = (props: UpdateListItemsProps) => {
           ${ props.listItem.isDone ? styles.checked : "" }
           ${!props.listItem.text.trim() ? styles.empty : ""}
         `}
-        disabled={props.listItem.isDone}
+        aria-disabled={props.listItem.isDone} // Disables behaviour, not focus so screen readers still see input
         onChange={(e) => { updateListItem(e.target.value); }}
         onFocus={() => { setIsEditing(true); }}
         onBlur={() => { setIsEditing(false); }}

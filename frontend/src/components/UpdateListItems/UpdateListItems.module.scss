@@ -14,7 +14,7 @@
   border: 1px solid rgba(255, 255, 255, 0.04);
   box-shadow: var(--shadow);
 
-  .label:focus-within span:first-of-type {
+  .label:focus-within > span {
     outline-offset: 1px;
     @include mixins.focus;
   }
@@ -42,6 +42,7 @@
   .checked {
     text-decoration: line-through;
     color: var(--checked);
+    cursor: default;
   }
 
   @media (min-width: 768px) {

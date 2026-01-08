@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import styles from "./AffirmationModal.module.scss";
 import { MdAutoAwesome } from "react-icons/md";
 import { createPortal } from "react-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { themes } from "../../models/Theme";
 
@@ -15,6 +15,12 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
   const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   const currentTheme = themes[theme];
+
+  const ref = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    ref.current?.focus();  // Focus on first button in modal instead of elements behind the modal
+  }, []);
 
   const portalRoot = document.getElementById("affirmation-root");
 
@@ -34,7 +40,7 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
         day?
       </p>
       <div className={styles["btn-container"]}>
-      <button className="btn btn--affirmation-primary" onClick={() => navigate("/breathe")}>
+      <button ref={ref} className="btn btn--affirmation-primary" onClick={() => navigate("/breathe")}>
         Breathe
       </button>
       <button
