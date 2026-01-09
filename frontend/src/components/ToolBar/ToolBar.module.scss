@@ -65,7 +65,7 @@
 
   @media (min-width: 1024px) {
     .tool-icon {
-      transition: background-color 0.2s ease, color 0.2s ease;
+      transition: background-color 0.2s ease, color 0.2s ease, scale 0.2s ease;
     }
 
     button {
@@ -80,6 +80,7 @@
           color-mix(in srgb, var(--breathe-btn) 30%, transparent),
           var(--breathe-btn) 15%
         );
+        scale: 1.1;
       }
     }
   }
