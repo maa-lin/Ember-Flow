@@ -37,6 +37,7 @@
     &:disabled {
       background-color: variables.$disabled-btn-bg;
       color: variables.$disabled-btn-text;
+      cursor: default;
     }
   }
 
@@ -44,7 +45,7 @@
     color: variables.$primary-btn-text;
     background-color: variables.$primary-btn-bg;
 
-    &:active {
+    &:active:not(:disabled) {
       background-color: color.scale(
         variables.$primary-btn-bg,
         $lightness: variables.$active
@@ -100,7 +101,7 @@
       transition: color 0.2s ease, border 0.2s ease;
     }
 
-    .btn--primary:hover:not(:active) {
+    .btn--primary:hover:not(:active, :disabled) {
       background-color: color.scale(
         variables.$primary-btn-bg,
         $lightness: variables.$hover
@@ -164,6 +165,7 @@
     &:disabled {
       background-color: variables.$disabled-btn-bg-sunset;
       color: variables.$disabled-btn-text-sunset;
+      cursor: default;
     }
   }
 
@@ -171,7 +173,7 @@
     color: variables.$primary-btn-text-sunset;
     background-color: variables.$primary-btn-bg-sunset;
 
-    &:active {
+    &:active:not(:disabled) {
       background-color: color.scale(
         variables.$primary-btn-bg-sunset,
         $lightness: variables.$active
@@ -221,7 +223,7 @@
       transition: color 0.2s ease, border 0.2s ease;
     }
 
-    .btn--primary:hover:not(:active) {
+    .btn--primary:hover:not(:active, :disabled) {
       background-color: color.scale(
         variables.$primary-btn-bg-sunset,
         $lightness: variables.$hover
