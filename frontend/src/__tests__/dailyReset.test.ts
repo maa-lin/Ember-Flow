@@ -6,6 +6,7 @@ describe("Daily reset test", () => {
     let mockedSaveMoodToLocalStorage = jest.spyOn(localstorageUtils, "saveMoodToLocalStorage");
     let mockedsaveChallengeStatusToLocalStorage = jest.spyOn(localstorageUtils, "saveChallengeStatusToLocalStorage");
     let mockedsaveDailyStateToLocalStorage = jest.spyOn(localstorageUtils, "saveDailyStateToLocalStorage");
+    let mockedsaveHasClickedStartTheDayToLocalStorage = jest.spyOn(localstorageUtils, "saveHasClickedStartTheDayToLocalStorage");
 
     beforeEach(() => {
         mockedSaveMoodToLocalStorage.mockClear();
@@ -25,5 +26,6 @@ describe("Daily reset test", () => {
         expect(mockedSaveMoodToLocalStorage).toHaveBeenCalledWith(null);
         expect(mockedsaveChallengeStatusToLocalStorage).toHaveBeenCalledWith("active");
         expect(mockedsaveDailyStateToLocalStorage).toHaveBeenCalled();
+        expect(mockedsaveHasClickedStartTheDayToLocalStorage).toHaveBeenCalledWith(false);
     });
 });

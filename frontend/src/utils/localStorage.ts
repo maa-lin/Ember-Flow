@@ -126,4 +126,21 @@ export const getHasSeenWelcomePageFromLocalStorage = () => {
   };
 
   return null;
+};
+
+// Start the day
+export const saveHasClickedStartTheDayToLocalStorage = (hasClicked: boolean) => {
+  localStorage.setItem("hasClickedStartTheDay", JSON.stringify(hasClicked));
+};
+
+export const getHasClickedStartTheDayFromLocalStorage = () => {
+  const foundValue = localStorage.getItem("hasClickedStartTheDay");
+
+  if (foundValue) {
+    const hasClicked = JSON.parse(foundValue);
+
+    return hasClicked;
+  };
+
+  return false;
 }

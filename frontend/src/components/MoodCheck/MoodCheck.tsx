@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { MoodContext } from "../../contexts/MoodContext";
 import type { Mood } from "../../models/IMoodContext";
-import { saveMoodToLocalStorage } from "../../utils/localStorage";
+import { saveHasClickedStartTheDayToLocalStorage, saveMoodToLocalStorage } from "../../utils/localStorage";
 import styles from "./MoodCheck.module.scss";
 import {
   FaFaceLaughBeam,
@@ -93,7 +93,10 @@ export const MoodCheck = () => {
       <button
         className="btn btn--primary"
         disabled={!moodContext.mood}
-        onClick={() => navigate("/", { replace: true })}
+        onClick={() => {
+          navigate("/", { replace: true })
+          saveHasClickedStartTheDayToLocalStorage(true);
+        }}
       >
         Start your day
       </button>
