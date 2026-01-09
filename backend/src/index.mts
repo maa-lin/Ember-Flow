@@ -13,9 +13,13 @@ const dbUrl = process.env.MONGO_URL;
 if (!dbUrl) throw Error ("No MONGO_URL in .env"); 
 
 const app = express();
+const allowedOrigins = "https://ember-flow.vercel.app";
 
 app.use(json());
-app.use(cors());
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ["GET"]
+}));
 
 app.use("/affirmations", affirmationRouter);
 app.use("/challenges", challengeRouter)
