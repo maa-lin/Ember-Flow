@@ -16,10 +16,15 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
   const { theme } = useContext(ThemeContext);
   const currentTheme = themes[theme];
 
-  const ref = useRef<HTMLButtonElement>(null);
-
   useEffect(() => {
-    ref.current?.focus();  // Focus on first button in modal instead of elements behind the modal
+    const root = document.getElementById("root");
+    if (!root) return;
+
+    root.setAttribute("inert", ""); // makes the #root non-interactive while modal is open
+
+    return () => {
+      root.removeAttribute("inert");
+    }
   }, []);
 
   const portalRoot = document.getElementById("affirmation-root");
@@ -40,7 +45,7 @@ export const AffirmationModal = (props: AffirmationModalProps) => {
         day?
       </p>
       <div className={styles["btn-container"]}>
-      <button ref={ref} className="btn btn--affirmation-primary" onClick={() => navigate("/breathe")}>
+      <button className="btn btn--affirmation-primary" onClick={() => navigate("/breathe")}>
         Breathe
       </button>
       <button
