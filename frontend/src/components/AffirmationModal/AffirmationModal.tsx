@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import styles from "./AffirmationModal.module.scss";
 import { MdAutoAwesome } from "react-icons/md";
 import { createPortal } from "react-dom";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { themes } from "../../models/Theme";
 

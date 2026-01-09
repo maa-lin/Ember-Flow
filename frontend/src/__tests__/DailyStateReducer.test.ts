@@ -1,4 +1,4 @@
-import { ActionTypes, DailyStateReducer } from "../reducers/DailyStateReducer";
+import { DailyStateReducer } from "../reducers/DailyStateReducer";
 
 describe("Reducer Reset Test", () => {
     test("It should reset lists", () => {
